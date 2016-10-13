@@ -12,7 +12,7 @@ get '/questions/:id' do
   erb :'/questions/show'
 end
 
-post '/questions/new' do
+post '/questions' do
   new_question = Question.new(params[:question])
   if new_question.save
     redirect "/questions/#{new_question.id}"
