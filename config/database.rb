@@ -40,3 +40,4 @@ ActiveRecord::Base.establish_connection(
   :password => db.password,
   :database => DB_NAME,
   :encoding => 'utf8'
+)
