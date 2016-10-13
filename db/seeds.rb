@@ -1,4 +1,4 @@
-User.create(username: 'Me', email: 'me@iam.me', password_digest: 'password', moderator: true)
+User.create(username: 'Me', email: 'me@iam.me', password: 'password', moderator: true)
 
 Comment.create(user_id: 1, commenttable_id: 1, commenttable_type:"answer", comment: "this comment")
 Comment.create(user_id: 1, commenttable_id: 1, commenttable_type:"question", comment: "this comment")
