@@ -11,6 +11,7 @@ gem 'activesupport', '~>4.1'
 gem 'activerecord', '~>4.1'
 
 gem 'rake'
+gem 'bcrypt'
 
 # Use Thin for our web server
 gem 'thin'
