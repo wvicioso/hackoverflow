@@ -1,0 +1,9 @@
+<div class='votes'>
+  <%= @question.votes.length %>
+</div>
+
+<div class='question'>
+  <h2> <%= @question.title %> </h2>
+  <p>  <%= @question.question %> </p>
+  <span> <%= @question.user.username %> </span>
+</div>
