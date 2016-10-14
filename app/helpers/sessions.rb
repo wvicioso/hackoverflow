@@ -1,3 +1,3 @@
 def current_user
-  User.find_by(id: session[:user_id])
+  return User.find_by(id: session[:id])
 end
