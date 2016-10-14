@@ -7,7 +7,6 @@
   <p>  <%= @question.question %> </p>
   <span> <%= @question.user.username %> </span>
 </div>
-<a href="/question/new">add question</a>
 
 <h2>First set of answers</h2>
 
@@ -16,6 +15,13 @@
 <li class="ans"><%= answer.answer %></li>
 <li class="ans"><a href="/users/<%= answer.user.id %>"><%= answer.user.username %></a></li>
 <li class="ans"><%= answer.votes.count %></li>
-<li class="ans">answered <%= answer.created_at %></li>
+<li class="ans"><%= answer.created_at.strftime("answered %b %d'%y at %H:%M") %></li>
 <% end %>
 </ul>
+
+<form action="/questions/<%= @question.id %>" method="post">
+  <input type="text" name="answer[answer]" placeholder="answer">
+  <input type="hidden" name="answer[user_id]" value="<%= session[:id] %>">
+  <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
+  <input type="submit" value="Answer">
+</form>
