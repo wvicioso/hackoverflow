@@ -6,8 +6,17 @@
   <h2> <%= @question.title %> </h2>
   <p>  <%= @question.question %> </p>
   <span> <%= @question.user.username %> </span>
+  <span> <%= @question.created_at %> </span>
 </div>
-<a href="/question/new">add question</a>
+
+<% if session[:id] == @question.user.id %>
+  <form action="/questions/<%=@question.id%>" method="post">
+    <input type="hidden" name='_method' value='delete'>
+    <input type="submit" name="delete" value="Delete">
+  </form>
+<% end %>
+
+<a href="/question/new">add answer</a>
 
 <h2>First set of answers</h2>
 
