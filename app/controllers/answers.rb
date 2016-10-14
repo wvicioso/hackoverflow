@@ -1,30 +1,3 @@
-# delete '/questions/:question_id/answers/:id' do
-#   current_answer = Answer.find(params[:id])
-#   current_question = current_answer.question.id
-
-#   if session[:id] == current_answer.user.id 
-#     current_answer.destroy
-#   end
-
-#   redirect "/questions/#{current_question}"
-# end
-
-
-delete '/questions/:question_id/answers/:id' do 
-
-  @question = Question.find(params[:question_id])
-
-  @answer = @question.answers.find(params[:id])
-
-  @answer.destroy
-
-  redirect "/questions/params[:question_id]"
-
-end
-
-
-
-
 post '/questions/:id' do
   new_answer = Answer.new(params[:answer])
     new_answer.update_attributes(user_id: session[:id])
@@ -35,3 +8,38 @@ post '/questions/:id' do
   end
 end
 
+delete '/questions/:question_id/answers/:id' do
+	@question = Question.find(params[:question_id])
+  @answer = @question.answers.find(params[:id])
+
+  if session[:id] == @answer.user.id 
+    @answer.destroy
+  end
+
+  redirect "/questions/#{params[:question_id]}"
+end
+
+
+get '/questions/:question_id/answers/:id/edit' do
+
+  @question = Question.find(params[:question_id])
+  @answers = @question.answers
+  @answer = @answers.find(params[:id])
+
+  erb :'answers/edit'
+
+end
+
+put '/questions/:question_id/answers/:id' do
+
+  @question = Question.find(params[:question_id])
+
+  @answer = @question.answers.find(params[:id])
+
+ if session[:id] == @question.user.id
+    @answer.update_attributes(params[:answer])
+  end
+
+  redirect "/questions/#{params[:question_id]}"
+
+end
