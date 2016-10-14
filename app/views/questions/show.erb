@@ -1,14 +1,17 @@
 <div class='votes'>
-  <h4>votes</h4>
+
+  <a href=''>up</a>
   <%= @question.votes.length %>
+  <a href=''>down</a>
 </div>
 
 <div class='question'>
   <h2> <%= @question.title %> </h2>
   <p>  <%= @question.question %> </p>
   <%if @question.user%>
-    <span> <%= @question.user.username %> </span>
+    <a href='/users/<%= @question.user.id %>'> <%= @question.user.username %> </a>
   <%end%>
+  <span> <%= @question.created_at %> </span>
 </div>
 
 <h2>First set of answers</h2>

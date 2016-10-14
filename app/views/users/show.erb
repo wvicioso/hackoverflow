@@ -1,8 +1,6 @@
 <div>
   <h1>Welcome <%=@user.username%>!!</h1>
-  <a href="/sessions/logout">logout</a>
-  <a href="/users/<%=@user.id%>/edit">edit</a>
-
+  
   <h2>answers</h2>
   <p><%@user.answers.all.each do |ans|%>
     <%=ans.answer%>
