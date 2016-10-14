@@ -1,11 +1,14 @@
 <div class='votes'>
+  <h4>votes</h4>
   <%= @question.votes.length %>
 </div>
 
 <div class='question'>
   <h2> <%= @question.title %> </h2>
   <p>  <%= @question.question %> </p>
+  <%if @question.user%>
   <span> <%= @question.user.username %> </span>
+  <%end%>
 </div>
 <a href="/question/new">add question</a>
 
@@ -13,9 +16,11 @@
 
 <ul>
 <% @answers.each do | answer | %>
-<li class="ans"><%= answer.answer %></li>
-<li class="ans"><a href="/users/<%= answer.user.id %>"><%= answer.user.username %></a></li>
-<li class="ans"><%= answer.votes.count %></li>
-<li class="ans">answered <%= answer.created_at %></li>
-<% end %>
+  <li class="ans"><%= answer.answer %></li>
+  <%if answer.user%>
+    <li class="ans"><a href="/users/<%= answer.user.id %>"><%= answer.user.username %></a></li>
+  <%end%>
+    <li class="ans"><%= answer.votes.count %></li>
+    <li class="ans">answered <%= answer.created_at %></li>
+  <%end%>
 </ul>
