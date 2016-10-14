@@ -1,7 +1,0 @@
-<form action="/answers" method="post">
-  <input type="text" name="answer[answer]" placeholder="answer">
-  <input type="textarea" name="answer[user]" placeholder="your question goes here">
-  <input type="hidden" name="answer[user_id]" value="<%= session[:id] %>">
-  <input type="hidden" name="answer[question_id]" value="<%= question.id %>"
-  <input type="submit" value="ASK">
-</form>
