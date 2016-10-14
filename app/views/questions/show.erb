@@ -12,11 +12,12 @@
 <% if session[:id] == @question.user.id %>
   <form action="/questions/<%=@question.id%>" method="post">
     <input type="hidden" name='_method' value='delete'>
-    <input type="submit" name="delete" value="Delete">
+    <input type="submit" name="delete" value="delete">
   </form>
+  <a href='/questions/<%= @question.id %>/edit'>edit</a>
 <% end %>
 
-<a href="/question/new">add answer</a>
+<a href="/questions/new">add answer</a>
 
 <h2>First set of answers</h2>
 

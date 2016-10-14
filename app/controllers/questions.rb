@@ -37,3 +37,23 @@ delete '/questions/:id' do
 
   redirect '/questions'
 end
+
+get '/questions/:id/edit' do
+  @question = Question.find(params[:id])
+
+  if session[:id] == @question.user_id
+    erb :'/questions/edit'
+  else
+    redirect '/questions'
+  end
+end
+
+put '/questions/:id' do
+  current_question = Question.find(params[:id])
+
+  if session[:id] == current_question.user_id
+    current_question.update_attributes(params[:question])
+  end
+
+  redirect '/questions'
+end
