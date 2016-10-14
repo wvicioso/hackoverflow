@@ -4,19 +4,27 @@ get '/questions' do
 end
 
 get '/questions/new' do
-  erb :'/questions/new'
+  if current_user
+    erb :'questions/new'
+  else
+    erb :index
+  end
 end
 
 get '/questions/:id' do
+
   @question = Question.find(params[:id])
+  @answers = @question.answers
   erb :'/questions/show'
 end
 
 post '/questions' do
   new_question = Question.new(params[:question])
+  new_question.update_attributes(user_id: session[:id])
   if new_question.save
     redirect "/questions/#{new_question.id}"
   else
     'error'
   end
+
 end
