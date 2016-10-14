@@ -1,11 +1,14 @@
 <div class='votes'>
+  <h4>votes</h4>
   <%= @question.votes.length %>
 </div>
 
 <div class='question'>
   <h2> <%= @question.title %> </h2>
   <p>  <%= @question.question %> </p>
-  <span> <%= @question.user.username %> </span>
+  <%if @question.user%>
+    <span> <%= @question.user.username %> </span>
+  <%end%>
 </div>
 
 <h2>First set of answers</h2>
@@ -17,6 +20,7 @@
 <li class="ans"><%= answer.votes.count %></li>
 <li class="ans"><%= answer.created_at.strftime("answered %b %d'%y at %H:%M") %></li>
 <% end %>
+
 </ul>
 
 <form action="/questions/<%= @question.id %>" method="post">
