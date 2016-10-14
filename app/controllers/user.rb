@@ -12,8 +12,8 @@ end
 post '/users' do
   user = User.new(params[:new])
   if user.save
-  session[:id] = user.id
-  redirect "/users/#{user.id}"
+    session[:id] = user.id
+    redirect "/users/#{user.id}"
   else
     'error'
   end
