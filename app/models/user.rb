@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :comments
 
-has_secure_password
+  has_secure_password
   # Remember to create a migration!
 end
