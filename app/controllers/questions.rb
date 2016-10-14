@@ -18,15 +18,6 @@ get '/questions/:id' do
   erb :'/questions/show'
 end
 
-post '/questions/:id' do
-  new_answer = Answer.new(params[:answer])
-  if new_answer.save
-    redirect "/questions/#{params[:id]}"
-  else
-    'error'
-  end
-end
-
 post '/questions' do
   new_question = Question.new(params[:question])
   new_question.update_attributes(user_id: session[:id])
@@ -46,6 +37,7 @@ delete '/questions/:id' do
 
   redirect '/questions'
 end
+
 
 get '/questions/:id/edit' do
   @question = Question.find(params[:id])

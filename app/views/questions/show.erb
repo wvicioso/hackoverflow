@@ -22,8 +22,11 @@
 <li class="ans"><a href="/users/<%= answer.user.id %>"><%= answer.user.username %></a></li>
 <li class="ans"><%= answer.votes.count %></li>
 <li class="ans"><%= answer.created_at.strftime("answered %b %d'%y at %H:%M") %></li>
+<form class="delete" action="/questions/answers/<%= answer.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="delete answer">
+  </form>
 <% end %>
-
 </ul>
 
 <form action="/questions/<%= @question.id %>" method="post">
@@ -32,3 +35,4 @@
   <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
   <input type="submit" value="Answer">
 </form>
+
