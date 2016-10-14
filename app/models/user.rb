@@ -8,4 +8,10 @@ class User < ActiveRecord::Base
 
 has_secure_password
   # Remember to create a migration!
+
+
+
+  def validate(pass)
+    self.password_digest == pass
+  end
 end
