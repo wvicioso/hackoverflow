@@ -13,17 +13,26 @@
   <%end%>
   <span> <%= @question.created_at %> </span>
 </div>
-<a href="/question/new">add question</a>
 
 <h2>First set of answers</h2>
 
 <ul>
 <% @answers.each do | answer | %>
-  <li class="ans"><%= answer.answer %></li>
-  <%if answer.user%>
-    <li class="ans"><a href="/users/<%= answer.user.id %>"><%= answer.user.username %></a></li>
-  <%end%>
-    <li class="ans"><%= answer.votes.count %></li>
-    <li class="ans">answered <%= answer.created_at %></li>
-  <%end%>
+<li class="ans"><%= answer.answer %></li>
+<li class="ans"><a href="/users/<%= answer.user.id %>"><%= answer.user.username %></a></li>
+<li class="ans"><%= answer.votes.count %></li>
+<li class="ans"><%= answer.created_at.strftime("answered %b %d'%y at %H:%M") %></li>
+<form class="delete" action="/questions/answers/<%= answer.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="delete answer">
+  </form>
+<% end %>
 </ul>
+
+<form action="/questions/<%= @question.id %>" method="post">
+  <input type="text" name="answer[answer]" placeholder="answer">
+  <input type="hidden" name="answer[user_id]" value="<%= session[:id] %>">
+  <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
+  <input type="submit" value="Answer">
+</form>
+
