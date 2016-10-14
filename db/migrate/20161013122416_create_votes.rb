@@ -6,7 +6,7 @@ class CreateVotes < ActiveRecord::Migration
       t.string :votable_type
       t.boolean :up_down
 
-      t.timestamp
+      t.timestamps
     end
   end
 end

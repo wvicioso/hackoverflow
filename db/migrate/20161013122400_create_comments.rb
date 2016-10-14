@@ -6,7 +6,7 @@ class CreateComments < ActiveRecord::Migration
       t.string :commenttable_type
       t.string :comment
 
-      t.timestamp
+      t.timestamps
     end
   end
 end
