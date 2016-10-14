@@ -5,7 +5,7 @@ class CreateVotes < ActiveRecord::Migration
       t.references :votable, polymorphic: true, index: true
       t.boolean :up_down
 
-      t.timestamp
+      t.timestamps
     end
 
   end

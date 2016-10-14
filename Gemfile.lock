@@ -86,4 +86,8 @@ DEPENDENCIES
   thin
 
 BUNDLED WITH
+<<<<<<< HEAD
    1.13.1
+=======
+   1.13.3
+>>>>>>> answers

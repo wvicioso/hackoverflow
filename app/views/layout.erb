@@ -6,7 +6,7 @@
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
   -->
-  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/style.css">
   <!--
     application.css is where you put your styles
   -->
@@ -19,6 +19,15 @@
 </head>
 
 <body>
+  <div class="nav-div">
+  <nav>
+    <ul class="nav-ul">
+    <li class="nav-li"><a class="nav-a" href="/">Home</a></li>
+    <li class="nav-li"><a class="nav-a" href="/">Profile</a></li>
+    <li class="nav-li"><a class="nav-a" href="/questions">Questions</a></li>
+  </ul>
+  </nav>
+</div> 
   <%= yield %>
 </body>
 </html>

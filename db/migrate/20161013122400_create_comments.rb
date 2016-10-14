@@ -5,7 +5,7 @@ class CreateComments < ActiveRecord::Migration
       t.references :commentable, polymorphic: true, index: true
       t.string :comment
 
-      t.timestamp
+      t.timestamps
     end
 
   end

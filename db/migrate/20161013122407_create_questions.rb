@@ -7,7 +7,7 @@ class CreateQuestions < ActiveRecord::Migration
       t.integer :views
       t.integer :best_answer_id
 
-      t.timestamp
+      t.timestamps
     end
   end
 end
