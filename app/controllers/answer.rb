@@ -17,14 +17,14 @@ Answer.create(user_id: 2, question_id: 1, answer: "test 7")
 end											#display a list of all answers
 
 
-# get	'/answers/new' do		
+ #get	'/answers/new' do		
 
-# end											#return an HTML form for creating a new answer
+ #end											#return an HTML form for creating a new answer
 
 
-# post	'/answers' do
-
-# end											#create a new answer
+ post	'/answers' do
+ 	
+ end											#create a new answer
 
 
 # get	'/answers/:id' do
