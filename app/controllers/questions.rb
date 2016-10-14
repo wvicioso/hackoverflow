@@ -55,5 +55,5 @@ put '/questions/:id' do
     current_question.update_attributes(params[:question])
   end
 
-  redirect '/questions'
+  redirect "/questions/#{current_question.id}"
 end
