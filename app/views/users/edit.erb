@@ -1,0 +1,15 @@
+<div>
+  <h2>edit profile</h2>
+  <form class="new_user" action="/users/<%=@user_id%>" method="post">
+    <input type="hidden" name="_method" value="put">
+    <input type="text" name=new[username] placeholder="username">
+    <input type="text" name=new[email] placeholder="email">
+    <input type="text" name=new[password] placeholder="password">
+    <input type="submit" value="update">
+  </form>
+  <form class="delete" action="/users/<%=@user_id%>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="delete account">
+  </form>
+
+</div>

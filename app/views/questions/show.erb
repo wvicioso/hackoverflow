@@ -1,31 +1,26 @@
 <div class='votes'>
+  <h4>votes</h4>
   <%= @question.votes.length %>
 </div>
 
 <div class='question'>
   <h2> <%= @question.title %> </h2>
   <p>  <%= @question.question %> </p>
-  <span> <%= @question.user.username %> </span>
-  <span> <%= @question.created_at %> </span>
+  <%if @question.user%>
+    <span> <%= @question.user.username %> </span>
+  <%end%>
 </div>
-
-<% if session[:id] == @question.user.id %>
-  <form action="/questions/<%=@question.id%>" method="post">
-    <input type="hidden" name='_method' value='delete'>
-    <input type="submit" name="delete" value="delete">
-  </form>
-  <a href='/questions/<%= @question.id %>/edit'>edit</a>
-<% end %>
-
-<a href="/questions/new">add answer</a>
+<a href="/question/new">add question</a>
 
 <h2>First set of answers</h2>
 
 <ul>
 <% @answers.each do | answer | %>
-<li class="ans"><%= answer.answer %></li>
-<li class="ans"><a href="/users/<%= answer.user.id %>"><%= answer.user.username %></a></li>
-<li class="ans"><%= answer.votes.count %></li>
-<li class="ans">answered <%= answer.created_at %></li>
-<% end %>
+  <li class="ans"><%= answer.answer %></li>
+  <%if answer.user%>
+    <li class="ans"><a href="/users/<%= answer.user.id %>"><%= answer.user.username %></a></li>
+  <%end%>
+    <li class="ans"><%= answer.votes.count %></li>
+    <li class="ans">answered <%= answer.created_at %></li>
+  <%end%>
 </ul>
