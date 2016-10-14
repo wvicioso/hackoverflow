@@ -24,8 +24,10 @@ get '/users/:id' do
   erb :'users/show'
 end
 
-get 'users/:id' do
-  sessions.reset
+get '/users/:id/edit' do
+  
+end
 
-  erb :'sessions/logout'
+put '/users/:id' do
+
 end
