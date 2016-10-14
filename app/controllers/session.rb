@@ -5,7 +5,7 @@ end
 
 post '/sessions' do
   user = User.find_by(username: params[:user][:username])
-  if user != nil && user.validate(params[:user][:password])
+  if user && user.validate(params[:user][:password])
     session[:id] = user.id
     redirect "/users/#{user.id}"
   else
