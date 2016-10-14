@@ -14,4 +14,13 @@ class User < ActiveRecord::Base
   def validate(pass)
     self.password_digest == pass
   end
+
+
+  def reputation
+    q = 0
+    a = 0
+    q = self.questions.reduce(0) {|sum, item| sum + item.votes.length} if self.questions
+    a = self.answers.reduce(0) {|sum, item| sum + item.votes.length} if self.answers
+    a + q
+  end
 end
