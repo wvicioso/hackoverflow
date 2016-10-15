@@ -1,15 +1,23 @@
 get '/sessions/new' do
-  erb :'sessions/new'
+  if request.xhr?
+    erb :'/users/_new', layout: false
+  end
 end
 
 post '/sessions' do
   user = User.find_by(username: params[:user][:username])
   if user && user.authenticate(params[:user][:password])
     session[:id] = user.id
-    erb :'/users/_logged_in', layout: false
+    if request.xhr?
+      erb :'/users/_logged_in', layout: false
+    end
   else
-    error = errors.full_messages 
-    erb :'/users/_logged_in', layout: false
+    if !(user)
+      @sign_in_errors = ["looks like username #{params[:user][:username]} doesn't exist"]
+    else
+      @sign_in_errors = ["looks like you entered the wrong password"]
+    end
+    erb :'/users/_new', layout: false
   end
 end
 
