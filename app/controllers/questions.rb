@@ -1,5 +1,6 @@
 get '/questions' do
   @questions = Question.all
+  @last = Question.last
   erb :'/questions/index'
 end
 

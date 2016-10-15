@@ -1,15 +1,13 @@
 $(document).ready(function () {
 
-  alert('hello');
+  $('#submit_question').hide();
 
-  $("#submit_question").hide();
-
-  $("#add_question").on("click", function(event) {
+  $('#add_question').on("click", function(event) {
    event.preventDefault();
 
-   $("#submit_question").show();
+   $('#submit_question').show();
 
-   $("#submit_question").submit(function (event) {
+   $('#submit_question').submit(function (event) {
     event.preventDefault();
 
     var $inputs = $('form :input');
@@ -25,7 +23,8 @@ $(document).ready(function () {
     method: "POST",
     data: values
    }).done(function(msg) {
-    $("#append").append("<a href='/questions/<%= question.id %>'> <%= question.title %> </a>")
+    $('#append').append("<li><a href='/questions/<%= question.id %>'> <%= question.title %> </a></li>")
+    $('#submit_question').hide();
     });
 
 
