@@ -1,5 +1,5 @@
 User.create(username: 'Me', email: 'me@iam.me', password: 'password', moderator: true)
-User.create(username: 'matt', email: 'matt@matt.matt', password_digest: 'matt', moderator: true)
+User.create(username: 'matt', email: 'matt@matt.matt', password: 'matt', moderator: true)
 
 ans = Answer.create(user_id: 1, question_id: 1, answer: "this answer")
 
