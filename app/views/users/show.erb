@@ -9,6 +9,7 @@
   <p><%@user.questions.all.each do |ques|%>
       <a href='/questions/<%=ques.id%>'><%=ques.title%></a>
   <%end%></p>
+  
   <p>Reputation score: <%=@user.reputation%></P>
 
 

@@ -1,7 +1,7 @@
 <div class='votes'>
 
   <a href=''>up</a>
-    <%= @question.votes.length %>
+  <%= @question.votes.length %>
   <a href=''>down</a>
 </div>
 
@@ -13,16 +13,6 @@
   <%end%>
   <span> <%= @question.created_at %> </span>
 </div>
-
-<% if session[:id] == @question.user.id %>
-  <form action="/questions/<%=@question.id%>" method="post">
-    <input type="hidden" name='_method' value='delete'>
-    <input type="submit" name="delete" value="Delete">
-  </form>
-    <a href='/questions/<%= @question.id %>/edit'>edit</a>
-<% end %>
-
-<a href="/question/new">add question</a>
 
 <h2>First set of answers</h2>
 
@@ -36,7 +26,11 @@
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="delete answer">
   </form>
- <a href="/questions/<%= @question.id %>/answers/<%= answer.id %>/edit">Edit</a>
+  <form action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
+  <input type="hidden" name='_method' value='put'>
+  <input type="text" name="answer[answer]" value="<%= answer.answer %>">
+  <input type="submit" name="edit" value="edit">
+</form>
 
 <% end %>
 </ul>
@@ -47,4 +41,3 @@
   <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
   <input type="submit" value="Answer">
 </form>
-
