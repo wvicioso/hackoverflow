@@ -4,15 +4,16 @@ end
 
 post '/sessions' do
   user = User.find_by(username: params[:user][:username])
-  if user.authenticate(params[:user][:password])
+  if user && user.authenticate(params[:user][:password])
     session[:id] = user.id
-    redirect "/questions"
+    erb :'/users/_logged_in', layout: false
   else
-    "error"
+    error = errors.full_messages 
+    erb :'/users/_logged_in', layout: false
   end
 end
 
 get '/sessions/logout' do
   session.clear
-  erb :'sessions/logout'
+  erb :'/users/_new', layout: false
 end

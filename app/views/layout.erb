@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!--
+    normalize.css removes cross-browser differences in defaults, e.g.,
+    differences in how form elements appear between Firefox and IE
+    See: http://necolas.github.com/normalize.css/
+  -->
+  <!-- <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/navbar.css"> -->
+  <!--
+    application.css is where you put your styles
+  -->
+  <!-- <link rel="stylesheet" href="/css/application.css"> -->
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/application.js"></script>
+  <script src="/js/nav.js"></script>
+
   <title></title>
 </head>
 
@@ -11,18 +27,13 @@
       <li class="nav-li"><a class="nav-a" href="/">Home</a></li>
       <li class="nav-li"><a class="nav-a" href="/users/<%= session[:id]%>">Profile</a></li>
       <li class="nav-li"><a class="nav-a" href="/questions">Questions</a></li>
-      <% if session[:id] %>
-        <span>Welcome <%= User.find(session[:id]).username %></span>
-          <a href="/sessions/logout">logout</a>
-          <a href="/user/<%=session[:id]%>/edit">edit</a>
-      <% else %>
-          <li class="nav-li"><a class="nav-a" href="/users/new">Create</a></li>
-          <form class="new_user" action="/sessions" method="post">
-            <input type="text" name=user[username] placeholder="username">
-            <input type="text" name=user[password] placeholder="password">
-            <input type="submit" value="login">
-          </form>
-      <% end %>
+      <div class='logging_in'>
+        <% if session[:id] %>
+            <%= erb :'/users/_logged_in' %>
+          <% else %>
+            <%= erb :'/users/_new' %>
+          <% end %>
+      </div>
     </ul>
   </nav>
 </div>
