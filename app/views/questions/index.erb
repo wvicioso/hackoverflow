@@ -1,7 +1,14 @@
-<a href="/questions/new">add question</a>
+<a id="add_question" href="/questions/new">add question</a>
+
+<form id="submit_question" action="/questions" method="post">
+  <input type="text" name="question[title]" placeholder="title">
+  <textarea name="question[question]" placeholder="your question goes here"></textarea>
+  <input type="submit" value="ASK">
+</form>
+
 
 <% if @questions%>
-  <ul>
+  <ul id="append">
     <% @questions.each do |question| %>
       <li><a href='/questions/<%= question.id %>'> <%= question.title %> </a></li>
     <% end %>
