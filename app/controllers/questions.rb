@@ -22,7 +22,7 @@ post '/questions' do
   new_question = Question.new(params[:question])
   new_question.update_attributes(user_id: session[:id])
   if new_question.save
-    redirect "/questions/#{new_question.id}"
+    erb :'/questions/index'
   else
     'error'
   end
