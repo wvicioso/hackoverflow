@@ -41,3 +41,4 @@ put '/questions/:question_id/answers/:id' do
   end
 
   redirect "/questions/#{params[:question_id]}"
+end
