@@ -26,7 +26,7 @@ post '/questions' do
     content_type :json
     {id: new_question.id.to_s, title: new_question.title}.to_json
   else
-    'error'
+    redirect '/'
   end
 end
 
