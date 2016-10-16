@@ -1,6 +1,7 @@
 <div class="container">
     <h2>Questions Page</h2>
     <%if session[:id]%>
+    <a id='add_question' href='#'>Ask a question</a>
     <form id="submit_question" action="/questions" method="post">
       <input type="text" name="question[title]" placeholder="title">
       <textarea name="question[question]" placeholder="your question goes here"></textarea>
