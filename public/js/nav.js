@@ -1,4 +1,16 @@
 $(document).ready(function() {
+
+  $('.logging_in').on('click', '.login', function(event){
+    event.preventDefault();
+
+    $.ajax({
+      url: '/sessions/new',
+      method: 'get'
+    }).done(function(response){
+      $('.logging_in').html(response)
+    })
+  });
+
   $('.nav-div').on('submit', 'form', function(event){
     event.preventDefault();
 
@@ -18,7 +30,7 @@ $(document).ready(function() {
     event.preventDefault();
 
     var route = $('#log_out').attr('href');
-    
+
     $.ajax({
       url: route,
       method: 'get'

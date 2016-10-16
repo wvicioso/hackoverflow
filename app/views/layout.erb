@@ -32,13 +32,13 @@
   <nav>
       <ul class="nav-ul">
       <li class="nav-li"><a class="nav-a" href="/">Home</a></li>
-      <li class="nav-li"><a class="nav-a" href="/users/<%= session[:id]%>">Profile</a></li>
       <li class="nav-li"><a class="nav-a" href="/questions">Questions</a></li>
       <div class='logging_in'>
         <% if session[:id] %>
             <%= erb :'/users/_logged_in' %>
           <% else %>
-            <%= erb :'/users/_new' %>
+            <a class='login' href='sessions/new'>log in</a>
+            <li class="nav-li"><a class="nav-a" href="/users/new">Create</a></li>
           <% end %>
       </div>
     </ul>

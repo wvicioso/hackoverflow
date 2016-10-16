@@ -1,4 +1,8 @@
-<li class="nav-li"><a class="nav-a" href="/users/new">Create</a></li>
+<% if @sign_in_errors %>
+  <% @sign_in_errors.each do |e| %>
+    <span> <%=e%> </span>
+  <% end %>
+<% end %>
 <form class="new_user" action="/sessions" method="post">
   <input type="text" name=user[username] placeholder="username">
   <input type="text" name=user[password] placeholder="password">

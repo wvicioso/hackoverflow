@@ -1,2 +1,2 @@
-<span>Welcome <%= User.find(session[:id]).username %></span>
+<span>Welcome <a href='users/<%= session[:id] %>'><%= User.find(session[:id]).username %></span>
 <a id='log_out' href="/sessions/logout">logout</a>
