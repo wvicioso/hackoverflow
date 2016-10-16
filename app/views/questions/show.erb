@@ -1,11 +1,9 @@
 <div class="container">
-  <div class='votes'>
-    <a href=''>up</a>
-      <%= @question.votes.length %>
-    <a href=''>down</a>
-  </div>
-
   <div class='question'>
+    <div class='votes'>
+      <%= erb :'/votes/_index' %>
+    </div>
+
     <h2> <%= @question.title %> </h2>
     <p>  <%= @question.question %> </p>
     <%if @question.user%>
@@ -52,4 +50,5 @@
       <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
       <input type="submit" value="Answer">
     </form>
+
 </div>
