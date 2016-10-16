@@ -52,6 +52,7 @@ $(document).ready(function () {
       $(event.target).parent().parent().children().first().next().html(msg.text).show();
     });
   });
+});
 
   $('.delete').submit(function(event) {
     event.preventDefault();
@@ -63,5 +64,3 @@ $(document).ready(function () {
       $(event.target).closest('ul').remove();
     });
   });
-
-});
