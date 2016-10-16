@@ -16,6 +16,8 @@
     <% @questions.each do |question| %>
       <li><a class="question" href='/questions/<%= question.id %>'><%= question.title %></a></li>
         <li>Views: <%= question.views %></li>
+                <li>Votes: <%= question.votes.length %></li>
+        <li>Answers: <%= question.answers.length %></li>
         <% end %>
       </ul>
     <% end %>
