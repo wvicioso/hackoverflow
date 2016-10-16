@@ -40,8 +40,30 @@
         </form>
       <a class="edit" href="/questions/<%= @question.id %>/answers/<%= answer.id %>/edit">Edit</a>
       <% end %>
-      <p>---------------------------------------------</p>
+      <li style='display:none' class='hide_c'><a class='hide_comments' href="">hide comments</a></li>
+      <li class='show_c'><a class='view_comments' href="">view comments</a></li>
+      <%if current_user%>
+        <li class='add'><a class='add_comments' href="">add comment</a></li>
+      <%end%>
+      <li style='display:none' class='show_add_c'>
+        <form class="create_comment" action="/answers/<%=answer.id%>/comments" method="post">
+            <input type="text" name="new[comment]">
+            <input type="submit">
+        </form>
+        <a class='cancel_add' href="">cancel</a>
+      </li>
+      <li style='display:none'>
+        <ul>
+          <% answer.comments.each do |com| %>
+            <li><%=com.comment%></li>
+            <li><%=com.user%></li>
+            <p>--------------------------------</p>
+          <%end%>
+          <a href="/answers/<%=answer.id%>/comments/new">add comment</a>
+        </ul>
+      </li>
     </ul>
+    <p>---------------------------------------------</p>
     <% end %>
   </div>
     <form action="/questions/<%= @question.id %>" method="post">
