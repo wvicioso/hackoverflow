@@ -1,6 +1,5 @@
 get '/questions' do
   @questions = Question.all
-  @last = Question.last
   erb :'/questions/index'
 end
 
@@ -13,9 +12,9 @@ get '/questions/new' do
 end
 
 get '/questions/:id' do
-
   @question = Question.find(params[:id])
   @answers = @question.answers
+  @question.update_attribute(:views, @question.views + 1)
   erb :'/questions/show'
 end
 

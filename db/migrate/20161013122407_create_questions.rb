@@ -4,10 +4,13 @@ class CreateQuestions < ActiveRecord::Migration
       t.integer :user_id
       t.string :title
       t.string :question
-      t.integer :views
+      t.integer :views, :default => 0
       t.integer :best_answer_id
 
       t.timestamps
     end
+
+    
+    
   end
 end

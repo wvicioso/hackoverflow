@@ -9,11 +9,15 @@
     </form>
     <%end%>
 
-    <% if @questions%>
-      <ul id="append">
-        <% @questions.each do |question| %>
-          <li><a href='/questions/<%= question.id %>'> <%= question.title %> </a></li>
+<% if @questions %>
+ 
+<% if @questions%>
+  <ul id="append">
+    <% @questions.each do |question| %>
+      <li><a class="question" href='/questions/<%= question.id %>'><%= question.title %></a></li>
+        <li>Views: <%= question.views %></li>
         <% end %>
       </ul>
+    <% end %>
     <% end %>
 </div>
