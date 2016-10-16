@@ -10,6 +10,8 @@ post '/sessions' do
     session[:id] = user.id
     if request.xhr?
       erb :'/users/_logged_in', layout: false
+    else
+      redirect '/questions'
     end
   else
     if !(user)
@@ -23,5 +25,5 @@ end
 
 get '/sessions/logout' do
   session.clear
-  erb :'/users/_new', layout: false
+  redirect '/questions'
 end

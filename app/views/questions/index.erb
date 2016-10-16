@@ -1,17 +1,18 @@
-<a id="add_question" href="/questions/new">ask a question</a>
+<div class="container">
+    <h2>Questions Page</h2>
+    <%if session[:id]%>
+    <form id="submit_question" action="/questions" method="post">
+      <input type="text" name="question[title]" placeholder="title">
+      <textarea name="question[question]" placeholder="your question goes here"></textarea>
+      <input type="submit" value="ASK">
+    </form>
+    <%end%>
 
-<%if session[:id]%>
-  <form id="submit_question" action="/questions" method="post">
-    <input type="text" name="question[title]" placeholder="title">
-    <textarea name="question[question]" placeholder="your question goes here"></textarea>
-    <input type="submit" value="ASK">
-  </form>
-<%end%>
-
-<% if @questions%>
-  <ul id="append">
-    <% @questions.each do |question| %>
-      <li><a href='/questions/<%= question.id %>'> <%= question.title %> </a></li>
+    <% if @questions%>
+      <ul id="append">
+        <% @questions.each do |question| %>
+          <li><a href='/questions/<%= question.id %>'> <%= question.title %> </a></li>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
+</div>
