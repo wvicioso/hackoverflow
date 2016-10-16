@@ -7,16 +7,17 @@
 
 
 post '/questions/:question_id/votes' do
-  question = Question.find(params[:id])
-  user = User.find(session[:id])
+  params[:question_id]
+  # question = Question.find(params[:id])
+  # user = User.find(session[:id])
 
-  new_vote = Vote.new(user_id: user.id, votable: question, up_down: true)
-  if new_vote.save && request.xkr?
-    vote_num(question)
-
-    content_type :json
-    {vote_num: vote_num(question)}.to_json
-  end
+  # new_vote = Vote.new(user_id: user.id, votable: question, up_down: true)
+  # if new_vote.save && request.xkr?
+  #   vote_num(question)
+  #
+  #   content_type :json
+  #   {vote_num: vote_num(question)}.to_json
+  # end
 end
 
 # get '/questions/:question_id/votes/:id' do
