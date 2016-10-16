@@ -31,11 +31,9 @@ end
 
 delete '/questions/:id' do
   current_question = Question.find(params[:id])
-
   if session[:id] == current_question.user_id
     current_question.destroy
   end
-
   redirect '/questions'
 end
 
@@ -52,10 +50,8 @@ end
 
 put '/questions/:id' do
   current_question = Question.find(params[:id])
-
   if session[:id] == current_question.user_id
     current_question.update_attributes(params[:question])
   end
-
   redirect "/questions/#{current_question.id}"
 end
