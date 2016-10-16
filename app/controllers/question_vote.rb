@@ -9,6 +9,7 @@ get '/questions/:question_id/votes/new' do
   erb :'votes/new'
 end
 
+
 post '/questions/:question_id/votes' do
   @question = Question.find(params[:question_id])
   @vote = @question.votes.new(params[:vote])
