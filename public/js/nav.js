@@ -18,11 +18,12 @@ $(document).ready(function() {
     event.preventDefault();
 
     var route = $('#log_out').attr('href');
-    
+
     $.ajax({
       url: route,
       method: 'get'
     }).done(function(response){
+      $('#submit_question').hide();
       $('.logging_in').html(response)
     })
   });

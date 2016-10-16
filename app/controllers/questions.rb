@@ -23,7 +23,8 @@ post '/questions' do
   new_question = Question.new(params[:question])
   new_question.update_attributes(user_id: session[:id])
   if new_question.save
-    erb :'/questions/index'
+    content_type :json
+    {id: new_question.id.to_s, title: new_question.title}.to_json
   else
     'error'
   end
