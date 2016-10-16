@@ -18,8 +18,8 @@ delete '/questions/:question_id/answers/:id' do
 
   redirect "/questions/#{params[:question_id]}"
 end
-
-
+#
+#
 get '/questions/:question_id/answers/:id/edit' do
 
   @question = Question.find(params[:question_id])
@@ -30,15 +30,11 @@ get '/questions/:question_id/answers/:id/edit' do
 
 end
 
+
 put '/questions/:question_id/answers/:id' do
-
   @question = Question.find(params[:question_id])
-
   @answer = @question.answers.find(params[:id])
-
- if session[:id] == @question.user.id
-    @answer.update_attributes(params[:answer])
-  end
-
-  redirect "/questions/#{params[:question_id]}"
+  @answer.update_attributes(answer: params[:new][:answer])
+  content_type :json
+  {text: @answer.answer}.to_json
 end
