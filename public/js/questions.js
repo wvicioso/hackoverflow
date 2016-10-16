@@ -1,6 +1,5 @@
 $(document).ready(function () {
   $('#submit_question').hide();
-
   $('#add_question').on("click", function(event) {
     event.preventDefault();
     $('#submit_question').show();
@@ -19,12 +18,10 @@ $(document).ready(function () {
       method: "POST",
       data: values
     }).done(function(msg) {
-
       $('#append').append("<li><a href='/questions/" + msg.id + "'>" + msg.title + "</a></li>");
       $('#submit_question').hide();
     });
   });
-
 
   $('.edit').click(function (event) {
     event.preventDefault();
@@ -34,16 +31,12 @@ $(document).ready(function () {
       url: route,
       method: "get"
     }).done(function(partial) {
-
       $(event.target).parent().children().first().next().show();
       $(event.target).parent().children().first().hide();
-
-
     });
   });
 
   $('.update').submit( function (event) {
-
     event.preventDefault();
     var $inputs = $('form :input');
     var values = {};
@@ -57,10 +50,18 @@ $(document).ready(function () {
       data: values
     }).done(function(msg) {
       $(event.target).parent().parent().children().first().next().html(msg.text).show();
-      // $(event.target).parent().children().first().next().show();
-
-
-      console.log(msg)
     });
   });
+
+  $('.delete').submit(function(event) {
+    event.preventDefault();
+    var route = $(this).attr('action');
+    $.ajax({
+      url: route,
+      method: "delete"
+    }).done(function() {
+      $(event.target).closest('ul').remove();
+    });
+  });
+
 });
