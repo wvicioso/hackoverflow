@@ -9,9 +9,12 @@ get '/answers/:answer_id/comments/new' do
   erb :'comments/new'
 end
 
-post '/answers/:answer_id/comments' do
-  Comment.new(params[:new])
-  redirect answer_show
+post '/answers/:id/comments' do
+  question = Answer.find(params[:id]).question
+  new_comment = Comment.create(user: current_user.id, comment: params[:new][:comment], commentable: question )
+  content_type :json
+  {text: new_comment.comment, user: new_comment.user.username}
+
 end
 
 get '/answers/:answer_id/comments/:id' do
