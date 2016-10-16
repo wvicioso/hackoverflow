@@ -2,12 +2,13 @@ $(document).ready(function() {
 
   $('.votes').on('click', '.vote_up', function(event){
     event.preventDefault();
-    var route = $(this).attr('href');
+    var route = $(this).attr('href'),
+        currentQuestion = $(this).parent().parent();
     $.ajax({
       url: route,
       method: 'post'
     }).done(function(response){
-      $(this).find('vote_num').html(response.vote_num)
+      currentQuestion.find('.vote_number').html(response.vote_num)
     })
   });
 });
