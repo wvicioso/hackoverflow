@@ -64,5 +64,3 @@ $(document).ready(function () {
       $(event.target).closest('ul').remove();
     });
   });
-
-});
