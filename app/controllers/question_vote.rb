@@ -1,19 +1,12 @@
 get '/questions/:question_id/votes' do
-
   @question = Question.find(params[:question_id])
-
   @votes = @question.votes
-
   erb :'votes/index'
-
 end
 
 get '/questions/:question_id/votes/new' do
-
   @question = Question.find(params[:question_id])
-
   erb :'votes/new'
-
 end
 
 post '/questions/:question_id/votes' do
