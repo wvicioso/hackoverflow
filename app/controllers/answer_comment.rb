@@ -14,7 +14,7 @@ post '/answers/:answer_id/comments' do
   redirect answer_show
 end
 
-get 	'/answers/:answer_id/comments/:id' do
+get '/answers/:answer_id/comments/:id' do
   @answer = Answer.find(params[:answer_id])
   @comment = Comment.find(params[:id])
 end
