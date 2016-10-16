@@ -26,7 +26,7 @@ get '/questions/:question_id/answers/:id/edit' do
   @answers = @question.answers
   @answer = @answers.find(params[:id])
 
-  erb :'answers/edit'
+  erb :'answers/edit', layout: false, locals: {question: @question, answer: @answer}
 
 end
 

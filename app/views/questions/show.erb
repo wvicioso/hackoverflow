@@ -23,28 +23,25 @@
 <% end %>
 
 <div class="answer">
-
-</div>
-  <div class='votes'>
-
-    <a href=''>up</a>
-      <%= @question.votes.length %>
-    <a href=''>down</a>
-  </div>
   <ul>
   <% @answers.each do | answer | %>
-  <li class="ans"><%= answer.answer %></li>
-  <li class="ans"><a href="/users/<%= answer.user.id %>"><%= answer.user.username %></a></li>
-  <li class="ans"><%= answer.votes.count %></li>
-  <li class="ans"><%= answer.created_at.strftime("answered %b %d'%y at %H:%M") %></li>
-  <form class="delete" action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
-      <input type="hidden" name="_method" value="delete">
-      <input type="submit" value="delete answer">
-    </form>
-   <a href="/questions/<%= @question.id %>/answers/<%= answer.id %>/edit">Edit</a>
-
+  <li id="<%= answer.id %>" class="ans_text"><%= answer.answer %></li>
+  <li class="ans_user"><a href="/users/<%= answer.user.id %>"><%= answer.user.username %></a></li>
+  <li class="ans_votes"><%= answer.votes.count %></li>
+  <li class="ans_time"><%= answer.created_at.strftime("answered %b %d'%y at %H:%M") %></li>
+    <%if answer.user.id == session[:id]%>
+      <form class="delete" action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="delete answer">
+        </form>
+       <a class="edit" href="/questions/<%= @question.id %>/answers/<%= answer.id %>/edit">Edit</a>
+    <% end %>
+    <p>
+      ---------------------------------------------
+    </p>
   <% end %>
   </ul>
+</div>
 
   <form action="/questions/<%= @question.id %>" method="post">
     <input type="text" name="answer[answer]" placeholder="answer">
@@ -52,4 +49,5 @@
     <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
     <input type="submit" value="Answer">
   </form>
+
 </div>

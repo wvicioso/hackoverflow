@@ -35,6 +35,7 @@ $(document).ready(function() {
       url: route,
       method: 'get'
     }).done(function(response){
+      $('#submit_question').hide();
       $('.logging_in').html(response)
     })
   });
