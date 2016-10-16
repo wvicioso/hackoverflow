@@ -46,7 +46,7 @@
         <li class='add'><a class='add_comments' href="">add comment</a></li>
       <%end%>
       <li style='display:none' class='show_add_c'>
-        <form class="create_comment" action="/answers/<%=answer.id%>/comments" method="post">
+        <form class="create_comment" action="/answers/<%= answer.id %>/comments" method="post">
             <input type="text" name="new[comment]">
             <input type="submit">
         </form>
