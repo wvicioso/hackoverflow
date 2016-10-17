@@ -4,12 +4,12 @@
       <%= erb :'/votes/_index' %>
     </div>
 
-    <h2> <%= @question.title %> </h2>
-    <p>  <%= @question.question %> </p>
+    <h2 class='q_title'> <%= @question.title %> </h2>
+    <p class='q_q'>  <%= @question.question %> </p>
     <%if @question.user%>
-      <a href='/users/<%= @question.user.id %>'> <%= @question.user.username %> </a>
+      <a class='q_user' href='/users/<%= @question.user.id %>'> <%= @question.user.username %> </a>
     <%end%>
-    <span> <%= @question.created_at %> </span>
+    <span class='q_date'> <%= @question.created_at.strftime("%b-%d-20%y") %> </span>
   </div>
 
   <% if session[:id] == @question.user.id %>
@@ -26,51 +26,44 @@
       <li id="<%= answer.id %>" class="ans_text"><%= answer.answer %></li>
       <li style='display:none'>
         <form class='update' action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
-          <input type="hidden" name="_method" value="put">
           <input type="text" name="new[answer]" value="<%=answer.answer%>">
           <input type="submit" value="update">
         </form></li>
       <li class="ans_user"><a href="/users/<%= answer.user.id %>"><%= answer.user.username %></a></li>
       <li class="ans_votes"><%= answer.votes.count %></li>
-      <li class="ans_time"><%= answer.created_at.strftime("answered %b %d'%y at %H:%M") %></li>
-      <%if answer.user.id == session[:id]%>
-        <form class="delete" action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
-          <input type="hidden" name="_method" value="delete">
-          <input type="submit" value="delete answer">
-        </form>
-      <a class="edit" href="/questions/<%= @question.id %>/answers/<%= answer.id %>/edit">Edit</a>
-      <% end %>
+      <li class="ans_time"><%= answer.created_at.strftime("%b-%d-20%y") %></li>
       <li style='display:none' class='hide_c'><a class='hide_comments' href="">hide comments</a></li>
       <li class='show_c'><a class='view_comments' href="">view comments</a></li>
       <%if current_user%>
         <li class='add'><a class='add_comments' href="">add comment</a></li>
       <%end%>
-      <li style='display:none' class='show_add_c'>
-        <form class="create_comment" action="/answers/<%= answer.id %>/comments" method="post">
-            <input type="text" name="new[comment]">
-            <input type="submit">
+      <%if answer.user.id == session[:id]%>
+        <form class="delete" action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="delete">
         </form>
-        <a class='cancel_add' href="">cancel</a>
+      <a class="edit" href="/questions/<%= @question.id %>/answers/<%= answer.id %>/edit">Edit</a>
+      <% end %>
+      <li style='display:none' class='show_add_c'>
+        <form class="create_comment" action="/answers/<%= answer.id %>/comments" type="post">
+            <input type="text" name="comment">
+            <input type="submit">
+            <a class='cancel_add' href="">cancel</a>
+        </form>
       </li>
-      <li style='display:none'>
-        <ul>
+        <ul class='money' style='display:none'>
           <% answer.comments.each do |com| %>
-            <li><%=com.comment%></li>
-            <li><%=com.user%></li>
-            <p>--------------------------------</p>
+            <li class='important' ><%=com.comment%></li><br>
+            <li class='imp'><%=com.user.username%></li><br>
           <%end%>
-          <a href="/answers/<%=answer.id%>/comments/new">add comment</a>
         </ul>
-      </li>
     </ul>
-    <p>---------------------------------------------</p>
     <% end %>
   </div>
-    <form action="/questions/<%= @question.id %>" method="post">
-      <input type="text" name="answer[answer]" placeholder="answer">
+  <textarea name="answer[answer]" form='new_ans'rows="4" cols="40" placeholder="answer"></textarea>
+    <form id='new_ans' action="/questions/<%= @question.id %>" method="post">
       <input type="hidden" name="answer[user_id]" value="<%= session[:id] %>">
       <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
       <input type="submit" value="Answer">
     </form>
-
 </div>

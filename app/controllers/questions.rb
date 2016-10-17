@@ -22,8 +22,7 @@ post '/questions' do
   new_question = Question.new(params[:question])
   new_question.update_attributes(user_id: session[:id])
   if new_question.save
-    content_type :json
-    {id: new_question.id.to_s, title: new_question.title}.to_json
+    redirect "/questions/#{new_question.id}"
   else
     redirect '/'
   end
@@ -31,10 +30,8 @@ end
 
 delete '/questions/:id' do
   current_question = Question.find(params[:id])
-  if session[:id] == current_question.user_id
-    current_question.destroy
-  end
-  redirect '/questions'
+  current_question.destroy
+  redirect '/'
 end
 
 

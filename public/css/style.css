@@ -1,6 +1,161 @@
 .container {
+  background-color: #0F1A20;
   margin: 20px auto;
   width: 600px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
+}
+
+
+* {
+ /*border: 2px solid white;*/
+font-family: sans-serif;
+}
+
+h1 {
+color: #D8D8D8;
+width: 45%;
+display: inline-block;
+font-size: 300%;
+
+}
+
+header {
+  background-color: #0F1A20;
+  color: #D8D8D8;
+  border-bottom: 4px solid green;
+}
+
+#first {
+  color: green;
+  text-align: right;
+}
+
+.loggin_in {
+  color: #D8D8D8;
+}
+
+.nav-ul {
+  color: #CEC1B3;
+
+}
+
+.nav-a {
+  font-size: 100%;
+}
+
+.nav-div  {
+  width: 49%;
+  display: inline-block;
+
+}
+
+.logging_in {
+  width: 49%;
+  text-align: right;
+  display: inline-block;;
+}
+
+body {
+  background-color: #AAAAAA;
+  color: #D8D8D8;
+}
+
+a {
+  text-decoration: none;
+  color: green;
+}
+
+a:visited {
+  color: green;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+li {
+  width: 18%;
+  display: inline-block;
+  font-weight: 100;
+}
+
+.q {
+  padding-top: 5%;
+  width:100%;
+  font-weight: 100;
+  font-style: oblique;
+  border-bottom: 6px solid #D8D8D8;
+
+}
+
+.ans_text {
+  display: inline-block;
+  width:100%;
+
+  font-weight: 100;
+  font-size: 100%;
+  border-bottom: 6px solid #D8D8D8;
+}
+
+.ans_user {
+  width:15%;
+
+}
+.ans_votes {
+  width:15%;
+
+}
+
+.ans_time {
+text-align: left;
+}
+
+.delete {
+  width:15%;
+  display: inline-block;
+
+}
+
+.question {
+font-size: 150%;
+}
+
+.q_title {
+}
+
+.q_q {
+
+}
+
+.q_user {
+  text-align: left;
+  font-weight: 100;
+  font-size: 70%;
+
+}
+
+.q_date {
+  text-align: left;
+  font-weight: 100;
+  font-size: 70%;
+}
+
+.answer {
+  display: inline-block;
+
+}
+
+.create_comment {
+  width: 100%;
+}
+
+.important {
+  display: inline;
+}
+
+.imp {
+  font-size: 70%;
+  text-align: left;
 }

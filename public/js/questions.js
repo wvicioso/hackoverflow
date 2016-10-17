@@ -5,23 +5,23 @@ $(document).ready(function () {
     $('#submit_question').show();
   });
 
-  $('#submit_question').submit(function (event) {
-    event.preventDefault();
-    var $inputs = $('form :input');
-    var values = {};
-    $inputs.each(function() {
-      values[this.name] = $(this).val();
-    });
-    var route = $(this).attr('action');
-    $.ajax({
-      url: route,
-      method: "POST",
-      data: values
-    }).done(function(msg) {
-      $('#append').append("<li><a href='/questions/" + msg.id + "'>" + msg.title + "</a></li>");
-      $('#submit_question').hide();
-    });
-  });
+  // $('#submit_question').submit(function (event) {
+  //   event.preventDefault();
+  //   var $inputs = $('form :input');
+  //   var values = {};
+  //   $inputs.each(function() {
+  //     values[this.name] = $(this).val();
+  //   });
+  //   var route = $(this).attr('action');
+  //   $.ajax({
+  //     url: route,
+  //     method: "POST",
+  //     data: $('#submit_question').serialize()
+  //   }).done(function(msg) {
+  //     $('#append').append("<li><a href='/questions/" + msg.id + "'>" + msg.title + "</a></li>");
+  //     $('#submit_question').hide();
+  //   });
+  // });
 
   $('.edit').click(function (event) {
     event.preventDefault();
@@ -31,8 +31,11 @@ $(document).ready(function () {
       url: route,
       method: "get"
     }).done(function(partial) {
-      $(event.target).parent().children().first().next().show();
-      $(event.target).parent().children().first().hide();
+      $(event.target).parent().children().first().show();
+
+      $(event.target).parent().children().first().remove();
+      $(event.target).parent().children().first().next();
+      $(event.target).parent().children().last().prev().prev().hide();
     });
   });
 
@@ -54,8 +57,10 @@ $(document).ready(function () {
   });
 });
 
-  $('.delete').submit(function(event) {
+
+  $(document.delete).submit(function(event) {
     event.preventDefault();
+    console.log("delete");
     var route = $(this).attr('action');
     $.ajax({
       url: route,
