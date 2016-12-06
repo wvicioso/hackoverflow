@@ -1,6 +1,8 @@
 get '/sessions/new' do
   if request.xhr?
-    erb :'/users/_new', layout: false
+    erb :'/sessions/_new', layout: false
+  else
+    erb :'/sessions/_new'
   end
 end
 
