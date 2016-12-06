@@ -15,29 +15,8 @@
 
   <title>Hack Overflow</title>
 </head>
-
-
-<nav>
-  <div class="nav-wrapper grey darken-3">
-    <a href="/" class="brand-logo center green-text">HACK <span class="white-text">OVERFLOW</span></a>
-    <ul id="nav-mobile" class="left hide-on-med-and-down">
-      <li><a href="/">HOME</a></li>
-      <li><a href="/questions">QUESTIONS</a></li>
-    </ul>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <% if session[:id] %>
-        <li><a href='/users/<%= session[:id] %>'><%= User.find(session[:id]).username %> </a></li>
-        <li><a href="/sessions/logout">LOGOUT</a></li>
-      <% else %>
-        <li><a href="/sessions/new">LOG IN</a></li>
-        <li><a href="/users/new">NEW USER</a></li>
-      <% end %>
-    </ul>
-  </div>
-</nav>
-
-
 <body>
+  <%= erb :navbar, :layout => false %>
   <%= yield %>
 </body>
 </html>
