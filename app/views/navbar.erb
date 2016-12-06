@@ -1,17 +1,35 @@
 <nav>
   <div class="nav-wrapper grey darken-3">
-    <a href="/" class="brand-logo center green-text">HACK <span class="white-text">OVERFLOW</span></a>
-    <ul id="nav-mobile" class="left hide-on-med-and-down">
-      <li><a href="/">HOME</a></li>
-      <li><a href="/questions">QUESTIONS</a></li>
+    <a href="/" class="brand-logo center"><span class="green-text">HACK </span><span class="white-text">OVERFLOW</span></a>
+    <ul id='large-nav'>
+      <div class="left">
+        <li><a href="/">HOME</a></li>
+        <li><a href="/questions">QUESTIONS</a></li>
+      </div>
+      <div  class="right">
+        <% if session[:id] %>
+          <li><a href='/users/<%= session[:id] %>'><%= User.find(session[:id]).username %> </a></li>
+          <li><a href="/sessions/logout">LOGOUT</a></li>
+        <% else %>
+          <li><a href="/sessions/new">LOG IN</a></li>
+          <li><a href="/users/new">NEW USER</a></li>
+        <% end %>
+      </div>
     </ul>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+
+    <a id='small-nav' class='dropdown-button btn grey darken-3' href='#' data-activates='dropdown1'><i class="material-icons">menu</i></a>
+    <!-- Dropdown Structure -->
+    <ul id='dropdown1' class='dropdown-content grey-text'>
+      <li><a class="grey-text text-darken-3" href="/">HOME</a></li>
+      <li><a class="grey-text text-darken-3" href="/questions">QUESTIONS</a></li>
+      <li class="divider"></li>
       <% if session[:id] %>
-        <li><a href='/users/<%= session[:id] %>'><%= User.find(session[:id]).username %> </a></li>
-        <li><a href="/sessions/logout">LOGOUT</a></li>
+        <li><a class="grey-text text-darken-3" href='/users/<%= session[:id] %>'><%= User.find(session[:id]).username %> </a></li>
+        <li><a class="grey-text text-darken-3" href="/sessions/logout">LOGOUT</a></li>
       <% else %>
-        <li><a href="/sessions/new">LOG IN</a></li>
-        <li><a href="/users/new">NEW USER</a></li>
+        <li><a class="grey-text text-darken-3" href="/sessions/new">LOG IN</a></li>
+        <li><a class="grey-text text-darken-3" href="/users/new">NEW USER</a></li>
       <% end %>
     </ul>
   </div>
