@@ -27,7 +27,7 @@
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <% if session[:id] %>
         <li><a href='/users/<%= session[:id] %>'><%= User.find(session[:id]).username %> </a></li>
-        <li><a href="/sessions/logout">logout</a></li>
+        <li><a href="/sessions/logout">LOGOUT</a></li>
       <% else %>
         <li><a href="/sessions/new">LOG IN</a></li>
         <li><a href="/users/new">NEW USER</a></li>
