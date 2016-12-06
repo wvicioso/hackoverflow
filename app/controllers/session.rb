@@ -1,9 +1,5 @@
 get '/sessions/new' do
-  if request.xhr?
-    erb :'/sessions/_new', layout: false
-  else
-    erb :'/sessions/_new'
-  end
+  erb :'/sessions/new'
 end
 
 post '/sessions' do
@@ -21,7 +17,7 @@ post '/sessions' do
     else
       @sign_in_errors = ["looks like you entered the wrong password"]
     end
-    erb :'/users/_new', layout: false
+    erb :'/sessions/new'
   end
 end
 

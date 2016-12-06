@@ -1,7 +1,11 @@
 <% if @sign_in_errors %>
-  <% @sign_in_errors.each do |e| %>
-    <span> <%=e%> </span>
-  <% end %>
+  <div class="row errors">
+    <div class="col s12 col m6 offset-m3">
+      <% @sign_in_errors.each do |e| %>
+        <span class='red-text'> <%=e%> </span>
+      <% end %>
+    </div>
+  </div>
 <% end %>
 <form class="new_user" action="/sessions" method="post">
   <div class="row">

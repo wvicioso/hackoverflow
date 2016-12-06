@@ -28,7 +28,8 @@
         <form class='update' action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
           <input type="text" name="new[answer]" value="<%=answer.answer%>">
           <input type="submit" value="update">
-        </form></li>
+        </form>
+      </li>
       <li class="ans_user"><a href="/users/<%= answer.user.id %>"><%= answer.user.username %></a></li>
       <li class="ans_votes"><%= answer.votes.count %></li>
       <li class="ans_time"><%= answer.created_at.strftime("%b-%d-20%y") %></li>
