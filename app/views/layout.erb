@@ -1,43 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="/css/app.css" type='text/css'>
   <script src="/js/application.js"></script>
   <script src="/js/nav.js"></script>
   <script src="/js/questions.js"></script>
   <script type="text/javascript" src="/js/votes.js" ></script>
   <script src="/js/comments.js"></script>
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-
   <title>Hack Overflow</title>
 </head>
-
-
-<nav>
-  <div class="nav-wrapper grey darken-3">
-    <a href="/" class="brand-logo center green-text">HACK <span class="white-text">OVERFLOW</span></a>
-    <ul id="nav-mobile" class="left hide-on-med-and-down">
-      <li><a href="/">HOME</a></li>
-      <li><a href="/questions">QUESTIONS</a></li>
-    </ul>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <% if session[:id] %>
-        <li><a href='/users/<%= session[:id] %>'><%= User.find(session[:id]).username %> </a></li>
-        <li><a href="/sessions/logout">LOGOUT</a></li>
-      <% else %>
-        <li><a href="/sessions/new">LOG IN</a></li>
-        <li><a href="/users/new">NEW USER</a></li>
-      <% end %>
-    </ul>
-  </div>
-</nav>
-
-
 <body>
+  <%= erb :navbar, :layout => false %>
   <%= yield %>
 </body>
 </html>

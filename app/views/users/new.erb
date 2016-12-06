@@ -1,9 +1,29 @@
 <div>
-  <h2>Create A User</h2>
+  <h2 class='center-align'>Create A User</h2>
   <form class="new_user" action="/users" method="post">
-    <input type="text" name=new[username] placeholder="username">
-    <input type="text" name=new[email] placeholder="email">
-    <input type="text" name=new[password] placeholder="password">
-    <input type="submit">
+    <div class="row">
+      <div class="col s12 col m6 offset-m3">
+        <div class="input-field">
+          <i class="material-icons prefix form_icon">account_circle</i>
+          <input type="text" name=user[username] id='username' class='validate'>
+          <label for="username">username</label>
+        </div>
+        <div class="input-field">
+          <i class="material-icons prefix form_icon">email</i>
+          <input type="email" name=user[email] id='email' class='validate'>
+          <label for="email">e-mail</label>
+        </div>
+        <div class="input-field">
+          <i class="material-icons prefix form_icon">vpn_key</i>
+          <input type="password" name=user[password] id='password' class='validate'>
+          <label for="password">password</label>
+        </div>
+      </div>
+    </div>
+    <div class="center-align">
+      <button class="btn waves-effect waves-light submit" type="submit" name="action">Register
+        <i class="material-icons right">done</i>
+      </button>
+    </div>
   </form>
 </div>
