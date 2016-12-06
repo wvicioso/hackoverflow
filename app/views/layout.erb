@@ -1,50 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--
-    normalize.css removes cross-browser differences in defaults, e.g.,
-    differences in how form elements appear between Firefox and IE
-    See: http://necolas.github.com/normalize.css/
-  -->
-  <!-- <link rel="stylesheet" href="/css/normalize.css">
-  <link rel="stylesheet" href="/css/navbar.css"> -->
-  <!--
-    application.css is where you put your styles
-  -->
-
-  <!-- <link rel="icon"
-      type="image/jpg"
-      href="anonymous_wallpaper_by_senovan.jpg"> -->
-  <link rel="stylesheet" href="/css/style.css">
-
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="/css/app.css">
   <script src="/js/application.js"></script>
   <script src="/js/nav.js"></script>
   <script src="/js/questions.js"></script>
   <script type="text/javascript" src="/js/votes.js" ></script>
   <script src="/js/comments.js"></script>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
   <title>Hack Overflow</title>
 </head>
 
-<body>
-  <div class="nav-div">
-  <nav>
-      <h4>Nav Bar</h4>
-      <ul class="nav-ul">
-      <li class="nav-li"><a class="nav-a" href="/">Home</a></li>
-      <li class="nav-li"><a class="nav-a" href="/questions">Questions</a></li>
-      <div class='logging_in'>
-        <% if session[:id] %>
-            <%= erb :'/users/_logged_in' %>
-          <% else %>
-            <a class='login' href='sessions/new'>log in</a>
-            <li class="nav-li"><a class="nav-a" href="/users/new">Create</a></li>
-          <% end %>
-      </div>
+
+<nav>
+  <div class="nav-wrapper grey darken-3">
+    <a href="/" class="brand-logo center green-text">HACK <span class="white-text">OVERFLOW</span></a>
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li><a href="/">HOME</a></li>
+      <li><a href="/questions">QUESTIONS</a></li>
     </ul>
-  </nav>
-</div>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <% if session[:id] %>
+        <li><a href='/users/<%= session[:id] %>'><%= User.find(session[:id]).username %> </a></li>
+        <li><a href="/sessions/logout">LOGOUT</a></li>
+      <% else %>
+        <li><a href="/sessions/new">LOG IN</a></li>
+        <li><a href="/users/new">NEW USER</a></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+
+
+<body>
   <%= yield %>
 </body>
 </html>

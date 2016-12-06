@@ -4,7 +4,7 @@ $(document).ready(function () {
     event.preventDefault();
     $(event.target).parent().prev().show();
     $(event.target).parent().hide();
-    $(event.target).parent().children().last().show();
+    $(event.target).parent().parent().children().last().show();
   });
 
   $('.hide_comments').on('click', function(event) {
@@ -25,21 +25,15 @@ $(document).ready(function () {
     $(event.target).parent().hide();
   });
 
-  $('.create_comment').submit(function(event) {
+  $(".create_comment").submit(function(event) {
     event.preventDefault();
-    var $inputs = $('form :input');
-    var values = {};
-    $inputs.each(function() {
-      values[this.name] = $(this).val();
-    });
     var route = $(this).attr('action');
-    console.log(route);
     $.ajax({
       url: route,
-      method: 'post',
-      data: values
+      type: "POST",
+      data: $(this).serialize()
     }).done(function(new_comment) {
-    $(event.target).parent().next().children().first().append("<li>" + new_comment.text + "</li><li>" + new_comment.user + "</li><p>--------------------------------</p>")
+    $(event.target).parent().next().children().first().append("<li class='important'>" + new_comment.text + "</li><br><li class='imp'>" + new_comment.user + "</li><br>")
     });
   });
 

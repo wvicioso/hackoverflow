@@ -1,25 +1,34 @@
 <div class="container">
-    <h2>Questions Page</h2>
+    <h2>Questions</h2>
     <%if session[:id]%>
-    <a id='add_question' href='#'>Ask a question</a>
-    <form id="submit_question" action="/questions" method="post">
-      <input type="text" name="question[title]" placeholder="title">
-      <textarea name="question[question]" placeholder="your question goes here"></textarea>
-      <input type="submit" value="ASK">
-    </form>
+      <a id='add_question' href='#'>Ask a question</a>
+      <form id="submit_question" action="/questions" method="post">
+        <input type="text" name="question[title]" placeholder="title"><br>
+        <textarea name="question[question]" placeholder="your question goes here"></textarea><br>
+        <input type="submit" value="ASK">
+      </form>
     <%end%>
-
-<% if @questions %>
- 
 <% if @questions%>
-  <ul id="append">
+  <ul class="white lighten-3">
     <% @questions.each do |question| %>
-      <li><a class="question" href='/questions/<%= question.id %>'><%= question.title %></a></li>
-        <li>Views: <%= question.views %></li>
-                <li>Votes: <%= question.votes.length %></li>
-        <li>Answers: <%= question.answers.length %></li>
-        <% end %>
-      </ul>
+      <div class="center question-wrapper">
+        <div class="middle-stat grey-text">
+          <li class="green-text"><%= question.votes.length %></li>
+        </div>
+        <div class="question-main">
+          <li>
+            <a class="grey-text text-darken-3" href='/questions/<%= question.id %>'>
+              <h2><%= question.title %></h2>
+            </a>
+              <h4 class="grey-text text-darken-3" >asked by <a class="green-text" href='/users/<%= question.user.id %>'><%= question.user.username %></a> on <%= question.created_at.strftime("%b-%d-20%y") %> </h4>
+          </li>
+        </div>
+        <div class="grey-text text-darken-3 question-stats">
+          <li>Views: <span class="green-text"><%= question.views %></span></li>
+          <li>Answers: <span class="green-text"><%= question.answers.length %></span></li>
+        </div>
+      </div>
     <% end %>
-    <% end %>
+  </ul>
+<% end %>
 </div>
