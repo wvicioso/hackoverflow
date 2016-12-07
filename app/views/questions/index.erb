@@ -5,7 +5,8 @@
       <form id="submit_question" action="/questions" method="post">
         <input type="text" name="question[title]" placeholder="title"><br>
         <textarea name="question[question]" placeholder="your question goes here"></textarea><br>
-        <input type="submit" value="ASK">
+        <input type="submit" value="ask">
+        <input type='button' value='cancel'>
       </form>
     <%end%>
 <% if @questions%>
@@ -17,7 +18,7 @@
         </div>
         <div class="question-main">
           <li>
-            <a class="grey-text text-darken-3 question-title" href='/questions/<%= question.id %>'><%= question.title %></a>
+            <h2><a class="grey-text text-darken-3 question-title" href='/questions/<%= question.id %>'><%= question.title %></a></h2>
             <span class="grey-text text-darken-3">asked by <a class="green-text question-author" href='/users/<%= question.user.id %>'><%= question.user.username %></a> on <%= question.created_at.strftime("%b-%d-20%y") %> </span>
           </li>
         </div>
