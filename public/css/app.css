@@ -48,7 +48,6 @@ nav {
 .middle-stat li {
   margin-top: 2vw;
   margin-right: 2vw;
-
   font-size: 2vw;
 }
 
@@ -92,6 +91,79 @@ a {
   up: 2vw;
 }
 
+.question-title {
+
+}
+
+.question-body {
+  border: 2px solid #eeeeee;
+  border-radius: 3px;
+  padding: 20px;
+}
+
+.question-user {
+  margin-right: 5px;
+  font-size: 15px;
+}
+
+.question-date {
+  text-align: right;
+
+}
+
+.answer-vote {
+  /*padding: 10px;*/
+  /*margin-left: 10%;*/
+
+}
+.answer-vote p {
+  display: inline-block;
+  padding: 2.5%;
+}
+
+/*.a-vote {
+  padding-right: 20px;
+  padding-left: 20px;
+}*/
+
+.answer-body {
+  border: 2px solid #eeeeee;
+  border-left: 4px solid #4caf50;
+  border-radius: 3px;
+  width: 92%
+}
+
+.answer-date {
+  text-align: right;
+}
+
+.answer-user {
+  font-size: 15px;
+}
+
+.answer-comment div {
+  display: inline-block;
+  width: 49.5%;
+
+}
+
+.answer-comment {
+  position: relative;
+  margin-left: 6vw
+}
+
+.comment-wrap {
+  /*width: 45%;*/
+}
+
+.comment a {
+  text-align: left;
+  font-size: 15px;
+}
+
+.comments {
+  margin-left: 15vw
+}
 
 @media (max-width: 600px) {
   #large-nav {
