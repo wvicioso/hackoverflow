@@ -7,14 +7,3 @@ ques = Question.create(user_id: 1, title: 'what is ruby?', question: "no really,
 
 Comment.create(user_id: 1, commentable: ans, comment: "this comment")
 Comment.create(user_id: 1, commentable: ques, comment: "this comment")
-
-Vote.create(user_id: 1, votable: ans, up_down: true)
-Vote.create(user_id: 1, votable: ques, up_down: true)
-Vote.create(user_id: 1, votable: ans, up_down: true)
-Vote.create(user_id: 1, votable: ques, up_down: true)
-Vote.create(user_id: 1, votable: ans, up_down: false)
-Vote.create(user_id: 1, votable: ques, up_down: false)
-Vote.create(user_id: 1, votable: ans, up_down: true)
-Vote.create(user_id: 1, votable: ques, up_down: false)
-Vote.create(user_id: 1, votable: ans, up_down: true)
-Vote.create(user_id: 1, votable: ques, up_down: true)

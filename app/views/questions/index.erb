@@ -17,10 +17,8 @@
         </div>
         <div class="question-main">
           <li>
-            <a class="grey-text text-darken-3" href='/questions/<%= question.id %>'>
-              <h2><%= question.title %></h2>
-            </a>
-              <h4 class="grey-text text-darken-3" >asked by <a class="green-text" href='/users/<%= question.user.id %>'><%= question.user.username %></a> on <%= question.created_at.strftime("%b-%d-20%y") %> </h4>
+            <a class="grey-text text-darken-3 question-title" href='/questions/<%= question.id %>'><%= question.title %></a>
+            <span class="grey-text text-darken-3">asked by <a class="green-text question-author" href='/users/<%= question.user.id %>'><%= question.user.username %></a> on <%= question.created_at.strftime("%b-%d-20%y") %> </span>
           </li>
         </div>
         <div class="grey-text text-darken-3 question-stats">
