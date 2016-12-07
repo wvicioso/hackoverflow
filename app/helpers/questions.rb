@@ -6,5 +6,5 @@ def vote_num(question)
 end
 
 def top_voted
-  Question.all.sort { |q1, q2| vote_num(q2) <=> vote_num(q1) }
+  Question.all.sort { |q1, q2| vote_num(q2) <=> vote_num(q1) }[0,10]
 end
