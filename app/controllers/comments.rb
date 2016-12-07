@@ -13,7 +13,7 @@ end
 
 post '/answers/:id/comments' do
   ans = Answer.find(params[:id])
-  new_comment = Comment.create(user_id: current_user.id, comment: params[:comment], commentable: ans)
+  new_comment = Comment.create(user_id: current_user.id, body: params[:comment], commentable: ans)
   content_type :json
   {comment: new_comment.body, user: new_comment.user.username, date: new_comment.created_at.strftime("%b-%d-20%y")}.to_json
 end
