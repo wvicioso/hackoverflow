@@ -1,15 +1,14 @@
 <div class="container">
-  <div class='question'>
-    <div class='votes'>
-      <%= erb :'/votes/_index' %>
-    </div>
 
-    <h2 class='q_title'> <%= @question.title %> </h2>
-    <p class='q_q'>  <%= @question.question %> </p>
+  <div class='question'>
+    <div class='votes'><%= erb :'/votes/_index' %></div>
+    <h2 class='question-title'><%= @question.title %></h2>
+    <p class='question-body grey lighten-4'><%= @question.question %></p>
     <%if @question.user%>
-      <a class='q_user' href='/users/<%= @question.user.id %>'> <%= @question.user.username %> </a>
+      <h6 class='question-date'><a class='question-user' href='/users/<%= @question.user.id %>'><%= @question.user.username %> </a> <%= @question.created_at.strftime("%b-%d-20%y") %></h6>
+    <%else%>
+      <h6 class='question-date'> <%= @question.created_at.strftime("%b-%d-20%y") %></h6>
     <%end%>
-    <span class='q_date'> <%= @question.created_at.strftime("%b-%d-20%y") %> </span>
   </div>
 
   <% if session[:id] == @question.user.id %>
@@ -20,45 +19,66 @@
     <a href='/questions/<%= @question.id %>/edit'>edit</a>
   <% end %>
 
-  <div class="answer">
+  <h4>Respones</h4>
+  <div class="answers">
     <% @answers.each do | answer | %>
-    <ul>
-      <li id="<%= answer.id %>" class="ans_text"><%= answer.answer %></li>
-      <li style='display:none'>
-        <form class='update' action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
+      <div class='answer-wrapper'>
+        <div class="answer-vote">
+          <p class="a-vote"><%= answer.votes.count %> </p>
+          <p id="<%= answer.id %>" class="answer-body grey lighten-4"><%= answer.answer %></p>
+        </div>
+
+        <form class='update' style='display:none' action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
           <input type="text" name="new[answer]" value="<%=answer.answer%>">
           <input type="submit" value="update">
         </form>
-      </li>
-      <li class="ans_user"><a href="/users/<%= answer.user.id %>"><%= answer.user.username %></a></li>
-      <li class="ans_votes"><%= answer.votes.count %></li>
-      <li class="ans_time"><%= answer.created_at.strftime("%b-%d-20%y") %></li>
-      <li style='display:none' class='hide_c'><a class='hide_comments' href="">hide comments</a></li>
-      <li class='show_c'><a class='view_comments' href="">view comments</a></li>
-      <%if current_user%>
-        <li class='add'><a class='add_comments' href="">add comment</a></li>
-      <%end%>
-      <%if answer.user.id == session[:id]%>
-        <form class="delete" action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
-          <input type="hidden" name="_method" value="delete">
-          <input type="submit" value="delete">
-        </form>
-      <a class="edit" href="/questions/<%= @question.id %>/answers/<%= answer.id %>/edit">Edit</a>
-      <% end %>
-      <li style='display:none' class='show_add_c'>
-        <form class="create_comment" action="/answers/<%= answer.id %>/comments" type="post">
-            <input type="text" name="comment">
-            <input type="submit">
-            <a class='cancel_add' href="">cancel</a>
-        </form>
-      </li>
-        <ul class='money' style='display:none'>
+
+        <div class="answer-comment">
+          <div class='comment'>
+            <a style='display:none' class='hide_comments' href="">hide comments</a>
+            <a class='view_comments show_c' href="">view comments</a>
+          </div>
+          <div class='answer-date'>
+              <a class='answer-user right-align' href='/users/<%= answer.user.id %>'>
+                <%= answer.user.username %>
+              </a> <%= answer.created_at.strftime("%b-%d-20%y") %>
+          </div>
+        </div>
+
+        <% if current_user%>
+          <a class='add_comments' href="">add comment</a>
+          <% if answer.user.id == session[:id]%>
+            <form class="delete" action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="delete">
+            </form>
+            <a class="edit" href="/questions/<%= @question.id %>/answers/<%= answer.id %>/edit">Edit</a>
+          <% end %>
+        <% end %>
+
+        <div style='display:none' class='show_add_c'>
+          <form class="create_comment" action="/answers/<%= answer.id %>/comments" type="post">
+              <input type="text" name="comment">
+              <input type="submit">
+              <a class='cancel_add' href="">cancel</a>
+          </form>
+        </div>
+
+        <div class='comments' style='display:none'>
           <% answer.comments.each do |com| %>
-            <li class='important' ><%=com.comment%></li><br>
-            <li class='imp'><%=com.user.username%></li><br>
+            <div class="answer-vote">
+              <p id="<%= answer.id %>" class="answer-body grey lighten-4"><%= com.comment %></p>
+            </div>
+            <div class="answer-comment left-align">
+              <div class='answer-date'>
+                  <a class='answer-user' href='/users/<%= answer.user.id %>'>
+                    <%= com.user.username %>
+                  </a> <%= com.created_at.strftime("%b-%d-20%y") %>
+              </div>
+            </div>
           <%end%>
-        </ul>
-    </ul>
+        </div>
+      </div>
     <% end %>
   </div>
   <textarea name="answer[answer]" form='new_ans'rows="4" cols="40" placeholder="answer"></textarea>
