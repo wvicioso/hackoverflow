@@ -15,7 +15,7 @@ post '/answers/:id/comments' do
   ans = Answer.find(params[:id])
   new_comment = Comment.create(user_id: current_user.id, comment: params[:comment], commentable: ans)
   content_type :json
-  {text: new_comment.comment, user: new_comment.user.username}.to_json
+  {comment: new_comment.comment, user: new_comment.user.username, date: new_comment.created_at.strftime("%b-%d-20%y")}.to_json
 end
 
 get '/answers/:answer_id/comments/:id' do
