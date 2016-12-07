@@ -61,7 +61,7 @@
     </ul>
     <% end %>
   </div>
-  <textarea name="answer[answer]" form='new_ans'rows="4" cols="40" placeholder="answer"></textarea>
+  <textarea name="answer[answer]" form='new_ans' rows="4" cols="40" placeholder="answer"></textarea>
     <form id='new_ans' action="/questions/<%= @question.id %>" method="post">
       <input type="hidden" name="answer[user_id]" value="<%= session[:id] %>">
       <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">

@@ -13,7 +13,7 @@
     <% @questions.each do |question| %>
       <div class="center question-wrapper">
         <div class="middle-stat grey-text">
-          <li class="green-text"><%= question.votes.length %></li>
+          <li class="green-text"><%= vote_num(question) %></li>
         </div>
         <div class="question-main">
           <li>
