@@ -2,16 +2,16 @@ $(document).ready(function () {
 
   $('.view_comments').on('click', function(event) {
     event.preventDefault();
-    $(event.target).parent().prev().show();
-    $(event.target).parent().hide();
-    $(event.target).parent().parent().children().last().show();
+    $(event.target).prev().show();
+    $(event.target).hide();
+    $(event.target).parent().parent().parent().children().last().show();
   });
 
   $('.hide_comments').on('click', function(event) {
     event.preventDefault();
-    $(event.target).parent().hide();
-    $(event.target).parent().next().show();
-    $(event.target).closest('ul').children().last().hide();
+    $(event.target).next().show();
+    $(event.target).hide();
+    $(event.target).parent().parent().parent().children().last().hide();
   });
 
   $('.add_comments').on('click', function(event) {
