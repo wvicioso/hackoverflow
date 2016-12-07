@@ -3,7 +3,7 @@ class CreateQuestions < ActiveRecord::Migration
     create_table :questions do |t|
       t.integer :user_id
       t.string :title
-      t.string :question
+      t.string :body
       t.integer :views, :default => 0
       t.integer :best_answer_id
 

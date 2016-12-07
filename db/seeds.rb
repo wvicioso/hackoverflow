@@ -1,14 +1,14 @@
 require 'faker'
 include Faker
-User.create(username: 'Me', email: 'me@iam.me', password: 'password', moderator: true)
-User.create(username: 'matt', email: 'matt@matt.matt', password: 'matt', moderator: true)
+User.create(username: 'wvicioso', email: 'me@iam.me', password: 'password', moderator: true)
+User.create(username: 'roman', email: 'rom@man.roman', password: 'roman', moderator: true)
 
-ans = Answer.create(user_id: 1, question_id: 1, answer: "this answer")
+ans = Answer.create(user_id: 1, question_id: 1, body: "this answer")
 
-ques = Question.create(user_id: 1, title: 'what is ruby?', question: "no really, what is it?", views: 1, best_answer_id: 1)
+ques = Question.create(user_id: 1, title: 'what is ruby?', body: "no really, what is it?", views: 1, best_answer_id: 1)
 
-Comment.create(user_id: 1, commentable: ans, comment: "this comment")
-Comment.create(user_id: 1, commentable: ques, comment: "this comment")
+Comment.create(user_id: 1, commentable: ans, body: "this comment for answer")
+Comment.create(user_id: 1, commentable: ques, body: "this comment for question")
 
 10.times do |i|
   User.create(
@@ -28,7 +28,7 @@ end
     user_id: rand(1..10),
     best_answer_id: b_a,
     title: Faker::ChuckNorris.fact,
-    question: q_body
+    body: q_body
   )
 end
 
@@ -36,7 +36,7 @@ end
   Answer.create(
     user_id: rand(1..10),
     question_id: rand(1..10),
-    answer: Faker::Hacker.say_something_smart
+    body: Faker::Hacker.say_something_smart
   )
 end
 

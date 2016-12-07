@@ -1,5 +1,5 @@
 <form class='update' action="/questions/<%= question.id %>/answers/<%= answer.id %>" method="post">
   <input type="hidden" name="_method" value="put">
-  <input type="text" name="new[answer]" value="<%=answer.answer%>">
+  <input type="text" name="new[answer]" value="<%=answer.body%>">
   <input type="submit" value="update">
 </form>
