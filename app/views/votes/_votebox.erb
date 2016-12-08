@@ -1,5 +1,19 @@
+<% if @classname == 'voted_up' %>
+  <a class='vote <%= @classname %>' id='up' href='/questions/<%= @question.id%>/votes'>&#x2191;</a>
+  <div class='vote_number'>
+    <%= vote_num(@question) %>
+  </div>
+  <a class='vote' id='down' href='/questions/<%= @question.id%>/votes'>&#x2193;</a>
+<% elsif @classname == 'voted_down' %>
+  <a class='vote' id='up' href='/questions/<%= @question.id%>/votes'>&#x2191;</a>
+  <div class='vote_number'>
+    <%= vote_num(@question) %>
+  </div>
+  <a class='vote <%= @classname %>' id='down' href='/questions/<%= @question.id%>/votes'>&#x2193;</a>
+<% else %>
 <a class='vote' id='up' href='/questions/<%= @question.id%>/votes'>&#x2191;</a>
 <div class='vote_number'>
   <%= vote_num(@question) %>
 </div>
 <a class='vote' id='down' href='/questions/<%= @question.id%>/votes'>&#x2193;</a>
+<% end %>

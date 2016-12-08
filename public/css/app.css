@@ -4,6 +4,17 @@
 
 }
 
+.vote {
+  color: rgba(0,0,0,0.3);
+}
+
+.voted_up {
+  color: green;
+}
+
+.voted_down {
+  color: red;
+}
 nav {
   border-bottom: 4px solid #4caf50;
 }
