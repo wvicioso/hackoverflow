@@ -4,7 +4,7 @@
 <% @answers.each do | answer | %>
 <a href="">Upvote</a>
 <a href="">Downvote</a>
-<li class="ans"><%= answer.answer %></li>
+<li class="ans"><%= answer.body %></li>
 <li class="ans"><a href="/users/<%= answer.user.id %>"><%= answer.user.username %></a></li>
 <li class="ans"><%= answer.votes.count %></li>
 <li class="ans"><%= answer.created_at.strftime("answered %b %d%y at %H:%M") %></li>

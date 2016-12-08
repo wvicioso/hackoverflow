@@ -36,5 +36,5 @@ put '/questions/:question_id/answers/:id' do
   @answer = @question.answers.find(params[:id])
   @answer.update_attributes(answer: params[:new][:answer])
   content_type :json
-  {text: @answer.answer}.to_json
+  {text: @answer.body}.to_json
 end

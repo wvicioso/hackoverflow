@@ -3,7 +3,7 @@
   <div class='question'>
     <div class='votes'><%= erb :'/votes/_index' %></div>
     <h2 class='question-title'><%= @question.title %></h2>
-    <p class='question-body grey lighten-4'><%= @question.question %></p>
+    <p class='question-body grey lighten-4'><%= @question.body %></p>
     <%if @question.user%>
       <h6 class='question-date'><a class='question-user' href='/users/<%= @question.user.id %>'><%= @question.user.username %> </a> <%= @question.created_at.strftime("%b-%d-20%y") %></h6>
     <%else%>
@@ -25,11 +25,11 @@
       <div class='answer-wrapper'>
         <div class="answer-vote">
           <p class="a-vote"><%= answer.votes.count %> </p>
-          <p id="<%= answer.id %>" class="answer-body grey lighten-4"><%= answer.answer %></p>
+          <p id="<%= answer.id %>" class="answer-body grey lighten-4"><%= answer.body %></p>
         </div>
 
         <form class='update' style='display:none' action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
-          <input type="text" name="new[answer]" value="<%=answer.answer%>">
+          <input type="text" name="new[answer]" value="<%=answer.body%>">
           <input type="submit" value="update">
         </form>
 
@@ -67,7 +67,7 @@
         <div class='comments' style='display:none'>
           <% answer.comments.each do |com| %>
             <div class="answer-vote">
-              <p id="<%= answer.id %>" class="answer-body grey lighten-4"><%= com.comment %></p>
+              <p id="<%= answer.id %>" class="answer-body grey lighten-4"><%= com.body %></p>
             </div>
             <div class="answer-comment left-align">
               <div class='answer-date'>
@@ -81,7 +81,7 @@
       </div>
     <% end %>
   </div>
-  <textarea name="answer[answer]" form='new_ans' rows="4" cols="40" placeholder="answer"></textarea>
+  <textarea name="answer[body]" form='new_ans' rows="4" cols="40" placeholder="answer"></textarea>
     <form id='new_ans' action="/questions/<%= @question.id %>" method="post">
       <input type="hidden" name="answer[user_id]" value="<%= session[:id] %>">
       <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
