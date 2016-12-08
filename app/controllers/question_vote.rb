@@ -15,7 +15,7 @@ post '/questions/:question_id/votes' do
     #decide if vote is up or down
     params[:up_down] == 'up' ? user_vote = true : user_vote = false
     #question.voted? is a method that determines if a user has voted on particular question
-    if question.voted?(current_user_id)
+    if voted(current_user_id, question)
       # if a vote exists, find in
       vote = Vote.where(votable_type: "Question", votable_id: question.id, user_id: current_user_id)[0]
       # update attribute with the newest vote
@@ -27,7 +27,7 @@ post '/questions/:question_id/votes' do
   end
 
   content_type :json
-  {vote_num: vote_num(question), question_id: question.id}.to_json
+  {vote_num: vote_num(question), question_id: question.id, vote_class: voted(current_user_id, question)}.to_json
 end
 
 put '/questions/:question_id/votes/:id' do

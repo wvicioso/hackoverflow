@@ -5,8 +5,4 @@ class Question < ActiveRecord::Base
   has_many :answers
   has_one :best_answer, class_name: 'Answer', foreign_key: :id
   # Remember to create a migration!
-
-  def voted?(user_id)
-    self.votes.map {|vote| vote.user.id}.include?(user_id)
-  end
 end
