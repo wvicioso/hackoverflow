@@ -10,7 +10,7 @@ ques = Question.create(user_id: 1, title: 'what is ruby?', body: "no really, wha
 Comment.create(user_id: 1, commentable: ans, body: "this comment for answer")
 Comment.create(user_id: 1, commentable: ques, body: "this comment for question")
 
-10.times do |i|
+30.times do |i|
   User.create(
     username: Faker::Internet.user_name,
     email: Faker::Internet.free_email,
@@ -30,23 +30,33 @@ end
     title: Faker::ChuckNorris.fact,
     body: q_body
   )
-end
 
-50.times do |i|
-  Answer.create(
-    user_id: rand(1..10),
+  5.times do |j|
+    Answer.create(
+    user_id: j+1,
     question_id: rand(1..10),
     body: Faker::Hacker.say_something_smart
-  )
-end
+    )
+    30.times do |k|
+      rand(0..2) > 0 ? vote = true : vote = false
+      # rand(0..1) == 1 ? type = Question : type = Answer
+      Vote.create(
+      user_id: k+1,
+      up_down: vote,
+      votable_type: 'Answer',
+      votable_id: Answer.last.id
+      )
+    end
+  end
 
-500.times do |i|
-  rand(0..2) > 0 ? vote = true : vote = false
-  rand(0..1) == 1 ? type = Question : type = Answer
-  Vote.create(
-    user_id: rand(1..10),
+  30.times do |k|
+    rand(0..2) > 0 ? vote = true : vote = false
+    # rand(0..1) == 1 ? type = Question : type = Answer
+    Vote.create(
+    user_id: k+1,
     up_down: vote,
-    votable_type: type,
-    votable_id: rand(1..10)
-  )
+    votable_type: 'Question',
+    votable_id: i
+    )
+  end
 end
