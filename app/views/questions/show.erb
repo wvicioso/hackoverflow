@@ -1,19 +1,6 @@
 <div class="container">
 
-  <div class='question row'>
-    <div class='votes col s1 center-align'>
-      <%= erb :'/votes/_votebox' %>
-    </div>
-    <div class='col s11'>
-      <h2 class='question-title'><%= @question.title %></h2>
-      <p class='question-body grey lighten-4'><%= @question.body %></p>
-      <%if @question.user%>
-        <h6 class='question-date'><a class='question-user' href='/users/<%= @question.user.id %>'><%= @question.user.username %> </a> <%= @question.created_at.strftime("%b-%d-20%y") %></h6>
-      <%else%>
-        <h6 class='question-date'> <%= @question.created_at.strftime("%b-%d-20%y") %></h6>
-      <%end%>
-    </div>
-  </div>
+  <%= erb :'/questions/_question_info'%>
 
   <% if current_user_id == @question.user.id %>
     <form action="/questions/<%=@question.id%>" method="post">
@@ -24,6 +11,7 @@
   <% end %>
 
   <h4>Respones</h4>
+
   <div class="answers">
     <% @answers.each do | answer | %>
       <div class='answer-wrapper'>
@@ -53,17 +41,17 @@
           <a class='add_comments' href="">add comment</a>
         <% end %>
 
-          <% if answer.user.id == current_user_id %>
-            <div class="user-tools right-align">
-          <% else %>
-            <div class="user-tools right-align" style='display:none'>
-          <% end %>
-              <form class="delete" action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
-                <input type="hidden" name="_method" value="delete">
-                <input type="submit" value="delete">
-              </form>
-              <a class="edit" href="/questions/<%= @question.id %>/answers/<%= answer.id %>/edit">Edit</a>
-            </div>
+        <% if answer.user.id == current_user_id %>
+          <div class="user-tools right-align">
+        <% else %>
+          <div class="user-tools right-align" style='display:none'>
+        <% end %>
+        <form class="delete" action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="delete">
+        </form>
+        <a class="edit" href="/questions/<%= @question.id %>/answers/<%= answer.id %>/edit">Edit</a>
+        </div>
 
 
         <div style='display:none' class='show_add_c'>
