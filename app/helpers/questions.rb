@@ -1,7 +1,4 @@
 def vote_num(question)
-  puts '====================================================='
-  p question
-  puts '====================================================='
   question.votes.where(up_down: true).length - question.votes.where(up_down: false).length
 end
 

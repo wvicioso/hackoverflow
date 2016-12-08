@@ -8,18 +8,21 @@
 
 post '/questions/:question_id/votes' do
 
-  if session[:id]
+  #if a user is logged in(only logged in users can vote)
+  if current_user
+    #find question
     question = Question.find_by(id: params[:question_id])
-    user = User.find_by(id: session[:id])
+    #decide if vote is up or down
     params[:up_down] == 'up' ? user_vote = true : user_vote = false
-    if question.voted?(user.id)
-      vote = Vote.where(votable_type: "Question", votable_id: question.id, user_id: user.id)[0]
+    #question.voted? is a method that determines if a user has voted on particular question
+    if question.voted?(current_user_id)
+      # if a vote exists, find in
+      vote = Vote.where(votable_type: "Question", votable_id: question.id, user_id: current_user_id)[0]
+      # update attribute with the newest vote
       vote.update_attribute(:up_down, user_vote)
     else
-      new_vote = Vote.new(user_id: user.id, votable: question, up_down: user_vote)
-      if new_vote.save
-        vote_num(question)
-      end
+      #otherwise create a new vote
+      new_vote = Vote.create(user_id: current_user_id, votable: question, up_down: user_vote)
     end
   end
 

@@ -1,6 +1,7 @@
 <div>
-  <h1>Welcome <%=@user.username%>!!</h1>
-  
+  <% if current_user.id == @user.id %>
+    <h1>Welcome <%= @user.username %>!!</h1>
+  <% end %>
   <h2>answers</h2>
   <p><%@user.answers.all.each do |ans|%>
     <%=ans.body%>
@@ -9,7 +10,7 @@
   <p><%@user.questions.all.each do |ques|%>
       <a href='/questions/<%=ques.id%>'><%=ques.title%></a>
   <%end%></p>
-  
+
   <p>Reputation score: <%=@user.reputation%></P>
 
 

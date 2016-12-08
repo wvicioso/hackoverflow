@@ -1,17 +1,21 @@
 <div class="container">
 
-  <div class='question'>
-    <div class='votes'><%= erb :'/votes/_index' %></div>
-    <h2 class='question-title'><%= @question.title %></h2>
-    <p class='question-body grey lighten-4'><%= @question.body %></p>
-    <%if @question.user%>
-      <h6 class='question-date'><a class='question-user' href='/users/<%= @question.user.id %>'><%= @question.user.username %> </a> <%= @question.created_at.strftime("%b-%d-20%y") %></h6>
-    <%else%>
-      <h6 class='question-date'> <%= @question.created_at.strftime("%b-%d-20%y") %></h6>
-    <%end%>
+  <div class='question row'>
+    <div class='votes col s1 center-align'>
+      <%= erb :'/votes/_votebox' %>
+    </div>
+    <div class='col s11'>
+      <h2 class='question-title'><%= @question.title %></h2>
+      <p class='question-body grey lighten-4'><%= @question.body %></p>
+      <%if @question.user%>
+        <h6 class='question-date'><a class='question-user' href='/users/<%= @question.user.id %>'><%= @question.user.username %> </a> <%= @question.created_at.strftime("%b-%d-20%y") %></h6>
+      <%else%>
+        <h6 class='question-date'> <%= @question.created_at.strftime("%b-%d-20%y") %></h6>
+      <%end%>
+    </div>
   </div>
 
-  <% if session[:id] == @question.user.id %>
+  <% if current_user_id == @question.user.id %>
     <form action="/questions/<%=@question.id%>" method="post">
       <input type="hidden" name='_method' value='delete'>
       <input type="submit" name="delete" value="Delete">
@@ -49,7 +53,7 @@
           <a class='add_comments' href="">add comment</a>
         <% end %>
 
-          <% if answer.user.id == session[:id]%>
+          <% if answer.user.id == current_user_id %>
             <div class="user-tools right-align">
           <% else %>
             <div class="user-tools right-align" style='display:none'>
@@ -87,10 +91,12 @@
       </div>
     <% end %>
   </div>
-  <textarea name="answer[body]" form='new_ans' rows="4" cols="40" placeholder="answer"></textarea>
+  <% if current_user %>
+    <textarea name="answer[body]" form='new_ans' rows="4" cols="40" placeholder="answer"></textarea>
     <form id='new_ans' action="/questions/<%= @question.id %>" method="post">
-      <input type="hidden" name="answer[user_id]" value="<%= session[:id] %>">
+      <input type="hidden" name="answer[user_id]" value="<%= current_user_id %>">
       <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
       <input type="submit" value="Answer">
     </form>
+  <% end %>
 </div>

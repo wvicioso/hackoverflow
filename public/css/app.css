@@ -187,7 +187,6 @@ a {
   display: inline-block;
   width: 40%;
   margin-left: 10%;
-
 }
 
 @media (max-width: 600px) {
@@ -203,4 +202,8 @@ a {
   #small-nav {
     display: none;
   }
+}
+
+#up, #down {
+  font-size: 50px;
 }
