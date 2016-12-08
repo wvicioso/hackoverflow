@@ -1,5 +1,7 @@
 * {
   margin: auto;
+  /*border: 1px solid #4caf50;*/
+
 }
 
 nav {
@@ -166,6 +168,26 @@ a {
 
 .comments {
   margin-left: 15vw
+}
+
+.delete {
+  display: inline-block;
+}
+
+.edit {
+  display: inline-block;
+}
+
+.user-tools {
+  display: inline-block;
+  width: 40%;
+}
+
+.add_comments {
+  display: inline-block;
+  width: 40%;
+  margin-left: 10%;
+
 }
 
 @media (max-width: 600px) {

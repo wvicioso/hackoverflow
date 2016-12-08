@@ -47,21 +47,27 @@
 
         <% if current_user%>
           <a class='add_comments' href="">add comment</a>
-          <% if answer.user.id == session[:id]%>
-            <form class="delete" action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
-              <input type="hidden" name="_method" value="delete">
-              <input type="submit" value="delete">
-            </form>
-            <a class="edit" href="/questions/<%= @question.id %>/answers/<%= answer.id %>/edit">Edit</a>
-          <% end %>
         <% end %>
+
+          <% if answer.user.id == session[:id]%>
+            <div class="user-tools right-align">
+          <% else %>
+            <div class="user-tools right-align" style='display:none'>
+          <% end %>
+              <form class="delete" action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <input type="submit" value="delete">
+              </form>
+              <a class="edit" href="/questions/<%= @question.id %>/answers/<%= answer.id %>/edit">Edit</a>
+            </div>
+
 
         <div style='display:none' class='show_add_c'>
           <form class="create_comment" action="/answers/<%= answer.id %>/comments" type="post">
               <input type="text" name="comment">
               <input type="submit">
-              <a class='cancel_add' href="">cancel</a>
           </form>
+          <a class='cancel' href="">cancel</a>
         </div>
 
         <div class='comments' style='display:none'>

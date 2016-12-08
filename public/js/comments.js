@@ -17,13 +17,13 @@ $(document).ready(function () {
   $('.add_comments').on('click', function(event) {
     event.preventDefault();
     $(event.target).hide();
-    $(event.target).next().next().next().show();
+    $(event.target).next().next().show();
   });
 
   $('.cancel').on('click', function(event) {
     event.preventDefault();
     $(event.target).parent().hide();
-    $(event.target).parent().prev().prev().prev().show();
+    $(event.target).parent().prev().prev().show();
   });
 
   $(".create_comment").submit(function(event) {
@@ -35,7 +35,11 @@ $(document).ready(function () {
       data: $(this).serialize()
     }).done(function(response) {
       $(event.target).parent().next().show()
-      $(event.target).hide()
+      $(event.target).parent().hide()
+      $(event.target).parent().prev().prev().show()
+      $(event.target).parent().prev().prev().prev().children().first().children().first().show()
+      $(event.target).parent().prev().prev().prev().children().first().children().first().next().hide()
+
       $(event.target).parent().next().append("<div class='answer-vote'><p id='answer.id>' class='answer-body grey lighten-4'>" + response.comment + "</p></div><div class='answer-comment left-align'><div class='answer-date'><a class='answer-user' href='/users/answer.user.id'>" + response.user + "</a>" + response.date + "</div></div>")
 
 
