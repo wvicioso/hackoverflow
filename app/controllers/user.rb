@@ -39,7 +39,6 @@ put '/users/:id' do
   end
 end
 
-
 delete '/users/:id' do
   User.find(params[:id]).destroy
   redirect '/sessions/logout'
