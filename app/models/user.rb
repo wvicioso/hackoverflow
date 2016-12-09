@@ -11,6 +11,11 @@ class User < ActiveRecord::Base
   validates :email, :password_digest, :username, presence: true
   validates :password, length: { minimum: 6 }
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create, uniqueness: true
+  before_save :check_username
+
+  def check_username
+    User.all.select {|user| user.username.downcase == self.username}[0] || false
+  end
 
   def reputation
     question = 0

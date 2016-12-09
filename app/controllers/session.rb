@@ -3,7 +3,7 @@ get '/sessions/new' do
 end
 
 post '/sessions' do
-  user = User.find_by(username: params[:user][:username])
+  user = find_username(params[:user][:username])
   if user && user.authenticate(params[:user][:password])
     session[:id] = user.id
     if request.xhr?
