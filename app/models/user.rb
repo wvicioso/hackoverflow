@@ -7,14 +7,9 @@ class User < ActiveRecord::Base
   has_many :comments
 
   has_secure_password
-  # Remember to create a migration!
 
-
-
-  def validate(pass)
-    self.password_digest == pass
-  end
-
+  validates :email, :password_digest, :username, presence: true
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create, uniqueness: true
 
   def reputation
     q = 0
