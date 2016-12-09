@@ -9,11 +9,11 @@
 }
 
 .voted_up {
-  color: green;
+  color: #4caf50;
 }
 
 .voted_down {
-  color: red;
+  color: #f44336;
 }
 nav {
   border-bottom: 4px solid #4caf50;
