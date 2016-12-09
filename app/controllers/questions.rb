@@ -15,7 +15,6 @@ end
 get '/questions/:id' do
   @question = Question.find(params[:id])
   @answers = @question.answers
-  @classname = voted(current_user_id, @question)
   @question.update_attribute(:views, @question.views + 1)
   erb :'/questions/show'
 end
