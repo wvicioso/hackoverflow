@@ -1,12 +1,4 @@
-<% if @sign_in_errors %>
-  <div class="row errors">
-    <div class="col s12 col m6 offset-m3">
-      <% @sign_in_errors.each do |e| %>
-        <span class='red-text'> <%=e%> </span>
-      <% end %>
-    </div>
-  </div>
-<% end %>
+<%= erb :'/shared/_errors' %>
 <form class="new_user" action="/sessions" method="post">
   <div class="row">
     <div class="col s12 col m6 offset-m3">

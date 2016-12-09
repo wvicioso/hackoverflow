@@ -10,12 +10,13 @@ get '/users/new' do
 end
 
 post '/users' do
-  user = User.new(params[:user])
+  user = User.new(user_params(params))
   if user.save
     session[:id] = user.id
     redirect "/users/#{user.id}"
   else
-    'error'
+    @errors = user.errors.full_messages
+    erb :'users/new'
   end
 end
 
