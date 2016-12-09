@@ -47,6 +47,15 @@ end
       votable_id: Answer.last.id
       )
     end
+
+    rand(0..3).times do |k|
+      Comment.create(
+      user_id: k+1,
+      body: Faker::Hipster.sentence,
+      commentable_type: 'Answer',
+      commentable_id: Answer.last.id
+      )
+    end
   end
 
   30.times do |k|
@@ -57,6 +66,15 @@ end
     up_down: vote,
     votable_type: 'Question',
     votable_id: i
+    )
+  end
+
+  rand(0..3).times do |k|
+    Comment.create(
+    user_id: k+1,
+    body: Faker::Hipster.sentence,
+    commentable_type: 'Question',
+    commentable_id: Question.last.id
     )
   end
 end
