@@ -5,6 +5,11 @@ $(document).ready(function () {
     $('#submit_question').show();
   });
 
+  $('.cancel-question').on("click", function(event) {
+    event.preventDefault();
+    $('#submit_question').hide();
+  });
+
   // $('#submit_question').submit(function (event) {
   //   event.preventDefault();
   //   var $inputs = $('form :input');

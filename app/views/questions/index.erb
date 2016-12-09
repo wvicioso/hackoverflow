@@ -2,12 +2,12 @@
     <h2>Questions</h2>
     <%if session[:id]%>
       <a id='add_question' href='#'>Ask a question</a>
-      <form id="submit_question" action="/questions" method="post">
-        <input type="text" name="question[title]" placeholder="title"><br>
-        <textarea name="question[body]" placeholder="your question goes here"></textarea><br>
-        <input type="submit" value="ask">
-        <input type='button' value='cancel'>
-      </form>
+        <form id="submit_question" action="/questions" method="post">
+          <input class="new-question-title" type="text" name="question[title]" placeholder="title"><br>
+          <textarea class="new_question" name="question[body]" placeholder="your question goes here"></textarea><br>
+          <input class="button" type="submit" value="ask">
+          <input class="button cancel-question" type='button' value='cancel'>
+        </form>
     <%end%>
 <% if @questions%>
   <ul class="white lighten-3">
