@@ -15,6 +15,11 @@
 .voted_down {
   color: #f44336;
 }
+
+.answer-wrapper #up, .answer-wrapper #down{
+  font-size: 20px;
+}
+
 nav {
   border-bottom: 4px solid #4caf50;
 }
