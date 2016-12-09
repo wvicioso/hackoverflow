@@ -19,7 +19,8 @@
         <div class='answer-date'>
             <a class='answer-user right-align' href='/users/<%= answer.user.id %>'>
               <%= answer.user.username %>
-            </a> <%= answer.created_at.strftime("%b-%d-20%y") %>
+            </a>
+            <%= answer.created_at.strftime("%b-%d-20%y") %>
         </div>
       </div>
 
