@@ -4,6 +4,10 @@
 
 }
 
+ul {
+  list-style: none;
+}
+
 .vote {
   color: rgba(0,0,0,0.3);
 }
