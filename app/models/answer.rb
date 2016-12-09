@@ -7,4 +7,8 @@ class Answer < ActiveRecord::Base
   def type
     "answers"
   end
+
+  def classname
+    
+  end
 end
