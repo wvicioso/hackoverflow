@@ -15,6 +15,9 @@
 </head>
 <body>
   <%= erb :navbar, :layout => false %>
-  <%= yield %>
+  <main>
+    <%= yield %>
+  </main>
+  <%= erb :footer, :layout => false %>
 </body>
 </html>
