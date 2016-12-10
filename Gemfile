@@ -11,13 +11,10 @@ gem 'activesupport', '~>4.1'
 gem 'activerecord', '~>4.1'
 
 gem 'rake'
+gem 'rspec'
+gem 'faker'
 gem 'bcrypt'
 
 # Use Thin for our web server
 gem 'thin'
-gem 'shotgun'
-
-group :test do
-  gem 'faker'
-  gem 'rspec'
-end
+gem 'shotgun' 
