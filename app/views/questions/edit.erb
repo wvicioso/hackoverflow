@@ -1,6 +1,21 @@
-<form action="/questions/<%=@question.id%>" method="post">
-  <input type="hidden" name='_method' value='put'>
-  <input type="text" name="question[title]" value="<%= @question.title%>">
-  <input type="textarea" name="question[question]" value="<%= @question.body%>">
-  <input type="submit" name="edit" value="edit">
-</form>
+<div class="container">
+  <div class="row">
+    <form class='edit-question submit_question' action="/questions/<%=@question.id%>" method="post">
+      <input type="hidden" name='_method' value='put'>
+      <div class="input-field col s12 m8">
+        <input type="text" id='title' name="question[title]" value="<%= @question.title%>">
+        <label for="title">Question title</label>
+      </div>
+      <div class="input-field col s12 m8">
+        <textarea id="textarea1" class="materialize-textarea " name="question[question]"><%= @question.body%></textarea>
+        <label for="textarea1">Question body</label>
+      </div>
+      <div class="col s12">
+        <button class="btn waves-effect waves-light submit" type="submit" name="edit">Edit
+          <i class="material-icons right">edit</i>
+        </button>
+        <a href="/questions/<%=@question.id%>" class='btn red'><i class="material-icons left">call_made</i>Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>

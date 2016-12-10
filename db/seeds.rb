@@ -1,7 +1,7 @@
 require 'faker'
 include Faker
 User.create(username: 'wvicioso', email: 'me@iam.me', password: 'password', moderator: true)
-User.create(username: 'roman', email: 'rom@man.roman', password: 'roman', moderator: true)
+User.create(username: 'roman', email: 'rom@man.roman', password: 'password', moderator: true)
 
 ans = Answer.create(user_id: 1, question_id: 1, body: "this answer")
 

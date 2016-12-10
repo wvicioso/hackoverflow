@@ -13,9 +13,9 @@ post '/sessions' do
     end
   else
     if !(user)
-      @sign_in_errors = ["looks like username #{params[:user][:username]} doesn't exist"]
+      @errors = ["looks like username #{params[:user][:username]} doesn't exist"]
     else
-      @sign_in_errors = ["looks like you entered the wrong password"]
+      @errors = ["looks like you entered the wrong password"]
     end
     erb :'/sessions/new'
   end

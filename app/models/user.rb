@@ -7,20 +7,16 @@ class User < ActiveRecord::Base
   has_many :comments
 
   has_secure_password
-  # Remember to create a migration!
 
-
-
-  def validate(pass)
-    self.password_digest == pass
-  end
-
+  validates :email, :password_digest, :username, presence: true
+  validates :password, length: { minimum: 6 }
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create, uniqueness: true
 
   def reputation
-    q = 0
-    a = 0
-    q = self.questions.reduce(0) {|sum, item| sum + item.votes.length} if self.questions
-    a = self.answers.reduce(0) {|sum, item| sum + item.votes.length} if self.answers
-    a + q
+    question = 0
+    answer = 0
+    question = self.questions.reduce(0) {|sum, item| sum + item.votes.length} if self.questions
+    answer = self.answers.reduce(0) {|sum, item| sum + item.votes.length} if self.answers
+    answer + question
   end
 end

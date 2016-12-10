@@ -4,6 +4,18 @@
 
 }
 
+.edit-question {
+  margin-top: 3%;
+}
+
+.cancel {
+  background-color: red !important;
+}
+
+ul {
+  list-style: none;
+}
+
 .vote {
   color: rgba(0,0,0,0.3);
 }

@@ -1,0 +1,11 @@
+<% if @errors %>
+  <div class="row errors">
+    <div class="col s12 col m6 offset-m3">
+      <ul>
+      <% @errors.each do |e| %>
+        <li class='red-text'><i class="material-icons prefix">error_outline</i> <%=e%> </li>
+      <% end %>
+    </ul>
+    </div>
+  </div>
+<% end %>
