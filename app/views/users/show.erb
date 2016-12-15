@@ -1,17 +1,23 @@
-<div>
+<div class='container'>
   <% if current_user.id == @user.id %>
     <h1>Welcome <%= @user.username %>!!</h1>
+  <% else %>
+    <h1><%= @user.username %>'s profile.</h1>
   <% end %>
-  <h2>answers</h2>
-  <p><%@user.answers.all.each do |ans|%>
-    <%=ans.body%>
-  <%end%></p>
-  <h2>questions asked</h2>
-  <p><%@user.questions.all.each do |ques|%>
-      <a href='/questions/<%=ques.id%>'><%=ques.title%></a>
-  <%end%></p>
 
   <p>Reputation score: <%=@user.reputation%></P>
 
+  <h2>Questions asked</h2>
+  <ul>
+    <%@user.questions.all.each do |ques|%>
+      <li><a href='/questions/<%=ques.id%>'><%=ques.title%></a></li>
+    <%end%>
+  </ul>
 
+  <h2>Discussions</h2>
+  <ul>
+    <%@user.answers.all.each do |ans|%>
+      <li><%=ans.body%></li>
+    <%end%>
+  </ul>
 </div>
