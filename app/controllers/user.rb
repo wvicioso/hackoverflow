@@ -1,6 +1,5 @@
 enable :sessions
 
-
 get '/users' do
   erb :'users/index'
 end
