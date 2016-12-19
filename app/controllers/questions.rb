@@ -9,8 +9,11 @@ get '/questions/search' do
 end
 
 get '/questions/search-by' do
-  @questions = Question.all.select { |q| q.body.include?(params[:keyword]) }
-
+  @questions = search(params)
+  p '==================='
+  p @questions
+  p params
+  p '==================='
   if @questions.empty?
     @errors = ["Sorry no results"]
     erb :'/questions/search'
