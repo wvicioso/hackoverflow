@@ -1,7 +1,25 @@
 get '/questions' do
-  @questions = top_voted
+  @questions = Question.all
 
   erb :'/questions/index'
+end
+
+get '/questions/search' do
+  erb :'/questions/search'
+end
+
+get '/questions/search-by' do
+  @questions = search(params)
+  p '==================='
+  p @questions
+  p params
+  p '==================='
+  if @questions.empty?
+    @errors = ["Sorry no results"]
+    erb :'/questions/search'
+  else
+    erb :'/questions/index'
+  end
 end
 
 get '/questions/new' do

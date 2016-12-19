@@ -12,7 +12,7 @@ delete '/questions/:question_id/answers/:id' do
 	@question = Question.find(params[:question_id])
   @answer = @question.answers.find(params[:id])
 
-  if session[:id] == @answer.user.id
+  if current_user == @answer.user
     @answer.destroy
   end
 

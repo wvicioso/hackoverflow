@@ -7,8 +7,11 @@
         <li><a href="/questions">QUESTIONS</a></li>
       </div>
       <div  class="right">
-        <% if session[:id] %>
-          <li><a href='/users/<%= session[:id] %>'><%= User.find(session[:id]).username %> </a></li>
+        <li>
+           <li><a href="/questions/search">SEARCH</a></li>
+        </li>
+        <% if current_user %>
+          <li><a href='/users/<%= current_user_id %>'><%= User.find(session[:id]).username %> </a></li>
           <li><a href="/sessions/logout">LOGOUT</a></li>
         <% else %>
           <li><a href="/sessions/new">LOG IN</a></li>
@@ -16,7 +19,6 @@
         <% end %>
       </div>
     </ul>
-
 
     <a id='small-nav' class='dropdown-button btn grey darken-3' href='#' data-activates='dropdown1'><i class="material-icons">menu</i></a>
     <!-- Dropdown Structure -->
