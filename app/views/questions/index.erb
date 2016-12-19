@@ -8,27 +8,5 @@
         <input class="button cancel-question" type='button' value='cancel'>
       </form>
   <%end%>
-  <% if !(@questions.empty?)%>
-    <h2>Questions</h2>
-    <ul class="white lighten-3">
-      <% @questions.each do |question| %>
-        <div class="center question-wrapper">
-          <div class="middle-stat grey-text">
-            <li class="green-text"><%= vote_num(question) %></li>
-          </div>
-          <div class="question-main">
-            <li>
-              <p><a class="grey-text text-darken-3 question-title" href='/questions/<%= question.id %>'><%= question.title %></a></p>
-              <br>
-              <div class='row'>
-                <div class="grey-text text-darken-3 col m4"> Views: <span class="green-text"><%= question.views %></span></div>
-                <div class="grey-text text-darken-3 col m4"> Answers: <span class="green-text"><%= question.answers.length %></span></div>
-                <div class="grey-text text-darken-3 col m4">asked by <a class="question-author" href='/users/<%= question.user.id %>'><%= question.user.username %></a> on <%= question.created_at.strftime("%b-%d-20%y") %></div>
-              </div>
-            </li>
-          </div>
-        </div>
-      <% end %>
-    </ul>
-  <% end %>
+  <%= erb :'questions/_question_info', layout: false %>
 </div>

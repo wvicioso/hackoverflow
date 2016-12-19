@@ -10,7 +10,7 @@
   <h2>Questions asked</h2>
   <ul>
     <%@user.questions.all.each do |ques|%>
-      <li><a href='/questions/<%=ques.id%>'><%=ques.title%></a></li>
+      <li class='link-wrapper'><a class='answer-links' href='/questions/<%=ques.id%>'><%=ques.title%></a></li>
     <%end%>
   </ul>
 

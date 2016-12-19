@@ -1,6 +1,6 @@
 <div class="container">
 
-  <%= erb :'/questions/_question_info'%>
+  <%= erb :'/questions/_question_info', layout: false%>
 
   <% if current_user_id == @question.user.id %>
     <div class="actions">

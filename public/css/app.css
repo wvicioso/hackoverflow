@@ -7,14 +7,6 @@
   font-size: 25px;
 }
 
-.q-info {
-  display: block;
-  float: right;
-  width: 29%
-  margin: 2%;
-  background-color: red;
-}
-
 .link-wrapper {
   margin-bottom: 10px;
   border-bottom: solid 2px grey;
