@@ -3,6 +3,17 @@
   /*border: 1px solid #4caf50;*/
 }
 
+.home-description {
+  font-size: 20px;
+  text-indent: 20px;
+  font-style: italic;
+  margin: 30px;
+}
+
+.home-wrapper {
+  margin: 10px;
+}
+
 body {
   display: flex;
   min-height: 100vh;
@@ -140,7 +151,7 @@ a {
 .material-icons.active {
   color: #4caf50 !important;
 }
-.submit {
+.submit, .home-new {
   background-color: #4caf50;
 }
 .submit:hover {

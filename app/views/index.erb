@@ -1,6 +1,21 @@
-<div>
-  <h1>homepage</h1>
-  <a href="/users/new">create</a>
-  <a href="/sessions/new">login</a>
+<div class='home-wrapper'>
+  <div class="row valign-wrapper">
+    <div class="col s12 m5">
+      <% if current_user %>
+        <h4 class='center-align'>Welcome <%= current_user.username %></h4>
+        <a class="col s6 offset-s3 btn waves-effect waves-light submit valign" href="/questions/new">Ask a question
+          <i class="material-icons right">done</i>
+        </a>
+      <% else %>
+        <h4 class='center-align'>Welcome to Hack Overflow!</h4>
+        <div class="valign">
+          <p class='home-description'> -  Ask questions about programming, share knowlege, get help!</p>
+          <a class="home-new btn waves-effect waves-light submit col s6 offset-s3" href="/users/new">Sign Up now!</a>
+        </div>
+      <% end %>
+    </div>
+    <div class="col s12 m7">
+      <%= erb :'/questions/_top_voted' %>
+    </div>
+  </div>
 </div>
-
