@@ -3,6 +3,23 @@
   /*border: 1px solid #4caf50;*/
 }
 
+.answer-links {
+  font-size: 25px;
+}
+
+.q-info {
+  display: block;
+  float: right;
+  width: 29%
+  margin: 2%;
+  background-color: red;
+}
+
+.link-wrapper {
+  margin-bottom: 10px;
+  border-bottom: solid 2px grey;
+}
+
 .home-description {
   font-size: 20px;
   text-indent: 20px;

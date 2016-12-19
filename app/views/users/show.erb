@@ -17,7 +17,7 @@
   <h2>Discussions</h2>
   <ul>
     <%@user.answers.all.each do |ans|%>
-      <li> <a href="/questions/<%=ans.question.id%>"><%=ans.question.title%></a></li>
+      <li class='link-wrapper'> <a class='answer-links' href="/questions/<%=ans.question.id%>"><%=ans.question.title%></a></li>
     <%end%>
   </ul>
 </div>

@@ -18,13 +18,14 @@
           </div>
           <div class="question-main">
             <li>
-              <p><a class="grey-text text-darken-3 question-title" href='/questions/<%= question.id %>'><%= question.title %></a></p><br>
-              <span class="grey-text text-darken-3 question-date">asked by <a class="question-author" href='/users/<%= question.user.id %>'><%= question.user.username %></a> on <%= question.created_at.strftime("%b-%d-20%y") %></span>
+              <p><a class="grey-text text-darken-3 question-title" href='/questions/<%= question.id %>'><%= question.title %></a></p>
+              <br>
+              <div class='row'>
+                <div class="grey-text text-darken-3 col m4"> Views: <span class="green-text"><%= question.views %></span></div>
+                <div class="grey-text text-darken-3 col m4"> Answers: <span class="green-text"><%= question.answers.length %></span></div>
+                <div class="grey-text text-darken-3 col m4">asked by <a class="question-author" href='/users/<%= question.user.id %>'><%= question.user.username %></a> on <%= question.created_at.strftime("%b-%d-20%y") %></div>
+              </div>
             </li>
-          </div>
-          <div class="grey-text text-darken-3 question-stats">
-            <li>Views: <span class="green-text"><%= question.views %></span></li>
-            <li>Answers: <span class="green-text"><%= question.answers.length %></span></li>
           </div>
         </div>
       <% end %>
