@@ -4,6 +4,19 @@ get '/questions' do
   erb :'/questions/index'
 end
 
+get '/questions/search' do
+  erb :'/questions/search'
+end
+
+get '/questions/search-by' do
+  @questions = Question.all.select { |q| q.body.include?(params[:keyword]) }
+
+  if @questions.empty?
+    @errors = ["Sorry no results"]
+  end
+  erb :'/questions/index'
+end
+
 get '/questions/new' do
   if current_user
     erb :'questions/new'

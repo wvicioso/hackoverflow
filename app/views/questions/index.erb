@@ -1,5 +1,4 @@
 <div class="container">
-  <h2>Questions</h2>
   <% if current_user %>
     <a id='add_question' href='#'>Ask a question</a>
       <form id="submit_question" action="/questions" method="post">
@@ -9,7 +8,9 @@
         <input class="button cancel-question" type='button' value='cancel'>
       </form>
   <%end%>
-  <% if @questions%>
+  <%= erb :'/shared/_errors' %>
+  <% if !(@questions.empty?)%>
+    <h2>Questions</h2>
     <ul class="white lighten-3">
       <% @questions.each do |question| %>
         <div class="center question-wrapper">
