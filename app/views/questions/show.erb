@@ -3,11 +3,10 @@
   <%= erb :'/questions/_question_info'%>
 
   <% if current_user_id == @question.user.id %>
-    <form action="/questions/<%=@question.id%>" method="post">
-      <input type="hidden" name='_method' value='delete'>
-      <input type="submit" name="delete" value="Delete">
-    </form>
-    <a href='/questions/<%= @question.id %>/edit'>edit</a>
+    <div class="actions">
+      <a href='/questions/<%= @question.id %>/edit'>edit</a>
+      <a class='delete' href='/questions/<%= @question.id %>'>delete</a>
+    </div>
   <% end %>
 
   <h4>Respones</h4>

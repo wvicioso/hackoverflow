@@ -347,3 +347,9 @@ footer {
 #up, #down {
   font-size: 50px;
 }
+
+#btn-link {
+  background-color: transparent;
+  border: none;
+  display: inline;
+}

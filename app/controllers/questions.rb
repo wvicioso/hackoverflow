@@ -62,11 +62,7 @@ end
 
 put '/questions/:id' do
   current_question = Question.find(params[:id])
-  p '======================================'
-  p params
-  p current_question
-  p '======================================'
-
+  
   if current_user == current_question.user
     current_question.update_attributes(params[:question])
   end
