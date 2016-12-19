@@ -1,6 +1,19 @@
 <div class="container">
 
-  <%= erb :'/questions/_question_info', layout: false%>
+  <div class='question row'>
+    <div class='votes col s1 center-align'>
+      <%= erb :'/votes/_votebox', locals: { votable_type: @question} %>
+    </div>
+    <div class='col s11'>
+      <h2 class='question-title'><%= @question.title %></h2>
+      <p class='question-body grey lighten-4'><%= @question.body %></p>
+      <%if @question.user%>
+        <h6 class='question-date'><a class='question-user' href='/users/<%= @question.user.id %>'><%= @question.user.username %> </a> <%= @question.created_at.strftime("%b-%d-20%y") %></h6>
+      <%else%>
+        <h6 class='question-date'> <%= @question.created_at.strftime("%b-%d-20%y") %></h6>
+      <%end%>
+    </div>
+  </div>
 
   <% if current_user_id == @question.user.id %>
     <div class="actions">

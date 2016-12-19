@@ -1,6 +1,9 @@
 <div class="container">
   <% if current_user %>
-    <a id='add_question' href='#'>Ask a question</a>
+    <h2>Questions</h2>
+    <a class="col s6 offset-s3 btn waves-effect waves-light submit valign" id='add_question' href="/questions/new">Ask a question
+      <i class="material-icons right">add</i>
+    </a>
       <form id="submit_question" action="/questions" method="post">
         <input class="new-question-title" type="text" name="question[title]" placeholder="title"><br>
         <textarea class="new_question" name="question[body]" placeholder="your question goes here"></textarea><br>

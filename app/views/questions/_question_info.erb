@@ -1,12 +1,11 @@
 <% if !(@questions.empty?)%>
-  <h2>Questions</h2>
   <ul class="white lighten-3">
     <% @questions.each do |question| %>
-      <div class="center question-wrapper">
-        <div class="middle-stat grey-text">
+      <div class="center question-wrapper row">
+        <div class="middle-stat grey-text col m2">
           <li class="green-text"><%= vote_num(question) %></li>
         </div>
-        <div class="question-main">
+        <div class="question-main col m10">
           <li>
             <p><a class="grey-text text-darken-3 question-title" href='/questions/<%= question.id %>'><%= question.title %></a></p>
             <br>
