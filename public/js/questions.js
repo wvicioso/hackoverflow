@@ -37,7 +37,6 @@ $(document).ready(function () {
       method: "get"
     }).done(function(partial) {
       $(event.target).parent().children().first().show();
-
       $(event.target).parent().children().first().remove();
       $(event.target).parent().children().first().next();
       $(event.target).parent().children().last().prev().prev().hide();
@@ -61,6 +60,7 @@ $(document).ready(function () {
     });
   });
 
+  //ajax call responsible for deleting question
   $('.actions').on('click', '.delete', function(event){
     event.preventDefault();
     var route = $(this).attr('href');
