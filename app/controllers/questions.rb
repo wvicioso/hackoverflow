@@ -13,8 +13,10 @@ get '/questions/search-by' do
 
   if @questions.empty?
     @errors = ["Sorry no results"]
+    erb :'/questions/search'
+  else
+    erb :'/questions/index'
   end
-  erb :'/questions/index'
 end
 
 get '/questions/new' do

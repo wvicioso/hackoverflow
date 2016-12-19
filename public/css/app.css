@@ -3,10 +3,6 @@
   /*border: 1px solid #4caf50;*/
 }
 
-input[type="search"] {
-  height: 64px !important; /* or height of nav */
-}
-
 .home-description {
   font-size: 20px;
   text-indent: 20px;
@@ -323,6 +319,10 @@ a {
   display: inline-block;
   width: 40%;
   margin-left: 10%;
+}
+
+.search {
+  margin-top: 5%;
 }
 
 footer {
