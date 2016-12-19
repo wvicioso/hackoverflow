@@ -1,5 +1,5 @@
 get '/questions' do
-  @questions = Question.all
+  @questions = Question.order(created_at: :desc)
 
   erb :'/questions/index'
 end
@@ -10,10 +10,6 @@ end
 
 get '/questions/search-by' do
   @questions = search(params)
-  p '==================='
-  p @questions
-  p params
-  p '==================='
   if @questions.empty?
     @errors = ["Sorry no results"]
     erb :'/questions/search'
