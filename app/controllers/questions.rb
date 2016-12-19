@@ -1,5 +1,5 @@
 get '/questions' do
-  @questions = top_voted
+  @questions = Question.all
 
   erb :'/questions/index'
 end
