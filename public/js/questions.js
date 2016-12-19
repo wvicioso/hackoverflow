@@ -37,7 +37,6 @@ $(document).ready(function () {
       method: "get"
     }).done(function(partial) {
       $(event.target).parent().children().first().show();
-
       $(event.target).parent().children().first().remove();
       $(event.target).parent().children().first().next();
       $(event.target).parent().children().last().prev().prev().hide();
@@ -60,17 +59,17 @@ $(document).ready(function () {
       $(event.target).parent().parent().children().first().next().html(msg.text).show();
     });
   });
-});
 
-
-  $(document.delete).submit(function(event) {
+  //ajax call responsible for deleting question
+  $('.actions').on('click', '.delete', function(event){
     event.preventDefault();
-    console.log("delete");
-    var route = $(this).attr('action');
+    var route = $(this).attr('href');
+
     $.ajax({
       url: route,
-      method: "delete"
-    }).done(function() {
-      $(event.target).closest('ul').remove();
-    });
+      method: 'delete'
+    }).done(function(response){
+      window.location.href = '/questions';
+    })
   });
+});

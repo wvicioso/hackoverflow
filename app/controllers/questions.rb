@@ -1,7 +1,21 @@
 get '/questions' do
-  @questions = top_voted
+  @questions = Question.order(created_at: :desc)
 
   erb :'/questions/index'
+end
+
+get '/questions/search' do
+  erb :'/questions/search'
+end
+
+get '/questions/search-by' do
+  @questions = search(params)
+  if @questions.empty?
+    @errors = ["Sorry no results"]
+    erb :'/questions/search'
+  else
+    erb :'/questions/index'
+  end
 end
 
 get '/questions/new' do
@@ -48,7 +62,8 @@ end
 
 put '/questions/:id' do
   current_question = Question.find(params[:id])
-  if session[:id] == current_question.user_id
+  
+  if current_user == current_question.user
     current_question.update_attributes(params[:question])
   end
   redirect "/questions/#{current_question.id}"
