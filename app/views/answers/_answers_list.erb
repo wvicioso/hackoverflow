@@ -10,6 +10,10 @@
         </div>
       </div>
 
+      <% if current_user%>
+        <a class='add_comments' href="">add comment</a>
+      <% end %>
+
       <% if answer.user.id == current_user_id %>
         <div class="user-tools right-align">
       <% else %>
@@ -19,7 +23,10 @@
             <input type="hidden" name="_method" value="delete">
             <input type="submit" value="delete">
           </form>
-          <a class="edit" href="/questions/<%= @question.id %>/answers/<%= answer.id %>/edit">Edit</a>
+          <form class="edit" action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
+            <input type="hidden" name="_method" value="put">
+            <input type="submit" value="edit">
+          </form>
         </div>
 
       <form class='update' style='display:none' action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
@@ -40,13 +47,7 @@
         </div>
       </div>
 
-      <% if current_user%>
-        <a class='add_comments' href="">add comment</a>
-      <% end %>
-
-
-
-      <div style='display:none' class='show_add_c'>
+      <div style='display:none' class='new_comment'>
         <form class="create_comment" action="/answers/<%= answer.id %>/comments" type="post">
             <input type="text" name="comment">
             <input type="submit">
@@ -73,8 +74,9 @@
 </div>
 
 <% if current_user %>
-  <textarea name="answer[body]" form='new_ans' rows="4" cols="40" placeholder="answer"></textarea>
-  <form id='new_ans' action="/questions/<%= @question.id %>" method="post">
+  <h5>Submit an Answer</h5>
+  <textarea id='new-ans-body' name="answer[body]" form='new_ans' rows="4" cols="40" placeholder="answer"></textarea>
+  <form id='new-ans' action="/questions/<%= @question.id %>" method="post">
     <input type="hidden" name="answer[user_id]" value="<%= current_user_id %>">
     <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
     <input type="submit" value="Answer">
