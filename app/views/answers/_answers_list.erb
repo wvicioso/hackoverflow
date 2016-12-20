@@ -15,19 +15,19 @@
       <% end %>
 
       <% if answer.user.id == current_user_id %>
-        <div class="user-tools right-align">
+      <div class="user-tools right-align">
       <% else %>
-        <div class="user-tools right-align" style='display:none'>
+      <div class="user-tools right-align" style='display:none'>
       <% end %>
-          <form class="delete" action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
-            <input type="hidden" name="_method" value="delete">
-            <input type="submit" value="delete">
-          </form>
-          <form class="edit" action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
-            <input type="hidden" name="_method" value="put">
-            <input type="submit" value="edit">
-          </form>
-        </div>
+        <form class="delete" action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="delete">
+        </form>
+        <form class="edit" action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
+          <input type="hidden" name="_method" value="put">
+          <input type="submit" value="edit">
+        </form>
+      </div>
 
       <form class='update' style='display:none' action="/questions/<%= @question.id %>/answers/<%= answer.id %>" method="post">
         <input type="text" name="new[answer]" value="<%=answer.body%>">

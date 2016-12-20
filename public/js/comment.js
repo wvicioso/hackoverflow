@@ -26,6 +26,34 @@ $(document).ready(function () {
     $(event.target).parent().prev().prev().prev().prev().show();
   });
 
+  $('.edit').on('click', function(event) {
+    event.preventDefault();
+    $(event.target).closest('.user-tools').hide();
+    $(event.target).closest('.user-tools').prev().hide();
+    $(event.target).parent().parent().prev().prev().children().last().children().first().hide();
+    $(event.target).closest('.user-tools').next().show();
+  });
+
+  $('.update').submit( function (event) {
+    event.preventDefault();
+    console.log('here 1');
+    var $inputs = $('form :input');
+    var values = {};
+    $inputs.each(function() {
+      values[this.name] = $(this).val();
+    });
+    var route = $(this).attr('action');
+    $.ajax({
+      url: route,
+      method: "put",
+      data: values
+    }).done(function(msg) {
+      $(event.target).parent().prev().show();
+      $(event.target).parent().prev().prev().show();
+      $(event.target).parent().prev().prev().prev().children().last().children().first().text(msg.text).show();
+    });
+  });
+
   $(".create_comment").submit(function(event) {
     event.preventDefault();
     var route = $(this).attr('action');

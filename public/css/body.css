@@ -52,7 +52,8 @@ footer .container a:hover {
 }
 
 .cancel {
-  background-color: red !important;
+  color: #4caf50 !important;
+
 }
 
 ul {
