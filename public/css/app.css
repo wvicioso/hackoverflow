@@ -3,6 +3,15 @@
   /*border: 1px solid #4caf50;*/
 }
 
+.answer-links {
+  font-size: 25px;
+}
+
+.link-wrapper {
+  margin-bottom: 10px;
+  border-bottom: solid 2px grey;
+}
+
 .home-description {
   font-size: 20px;
   text-indent: 20px;
@@ -140,6 +149,11 @@ a {
 .input-field input:focus + label {
    color: #4caf50 !important;
 }
+
+.btn:focus, .btn-large:focus, .btn-floating:focus {
+    background-color: #4caf50 !important;
+}
+
  /* label underline focus color */
 .row .input-field input:focus {
   border-bottom: 1px solid #4caf50 !important;
@@ -321,6 +335,10 @@ a {
   margin-left: 10%;
 }
 
+.search {
+  margin-top: 5%;
+}
+
 footer {
   background-color: #4caf50 !important;
 }
@@ -342,4 +360,10 @@ footer {
 
 #up, #down {
   font-size: 50px;
+}
+
+#btn-link {
+  background-color: transparent;
+  border: none;
+  display: inline;
 }
