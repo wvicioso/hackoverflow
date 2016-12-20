@@ -75,10 +75,10 @@
 
 <% if current_user %>
   <h5>Submit an Answer</h5>
-  <textarea id='new-ans-body' name="answer[body]" form='new_ans' rows="4" cols="40" placeholder="answer"></textarea>
   <form id='new-ans' action="/questions/<%= @question.id %>" method="post">
     <input type="hidden" name="answer[user_id]" value="<%= current_user_id %>">
     <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
+    <textarea id='new-ans-body' name="answer[body]" rows="4" cols="40" placeholder="answer"></textarea>
     <input type="submit" value="Answer">
   </form>
 <% end %>

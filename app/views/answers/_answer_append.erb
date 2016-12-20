@@ -1,0 +1,73 @@
+<% @answers.each do | answer | %>
+<div class='answer-wrapper'>
+  <div class="row">
+    <div class='votes col s1 center-align'>
+      <%= erb :'/votes/_votebox', locals: { votable_type: answer} %>
+    </div>
+    <div class="answer-vote col s11">
+      <p id="<%= answer.id %>" class="answer-body grey lighten-4"><%= answer.body %></p>
+    </div>
+  </div>
+
+  <% if current_user%>
+    <a class='add_comments' href="">add comment</a>
+  <% end %>
+
+  <% if answer.user.id == current_user_id %>
+  <div class="user-tools right-align">
+  <% else %>
+  <div class="user-tools right-align" style='display:none'>
+  <% end %>
+    <form class="delete" action="/questions/<%= answer.question.id %>/answers/<%= answer.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="delete">
+    </form>
+    <form class="edit" action="/questions/<%= answer.question.id %>/answers/<%= answer.id %>" method="post">
+      <input type="hidden" name="_method" value="put">
+      <input type="submit" value="edit">
+    </form>
+  </div>
+
+  <form class='update' style='display:none' action="/questions/<%= answer.question.id %>/answers/<%= answer.id %>" method="post">
+    <input type="text" name="new[answer]" value="<%=answer.body%>">
+    <input type="submit" value="update">
+  </form>
+
+  <div class="answer-comment">
+    <div class='comment'>
+      <a style='display:none' class='hide_comments' href="">hide comments</a>
+      <a class='view_comments show_c' href="">view comments</a>
+    </div>
+    <div class='answer-date'>
+        <a class='answer-user right-align' href='/users/<%= answer.user.id %>'>
+          <%= answer.user.username %>
+        </a>
+        <%= answer.created_at.strftime("%b-%d-20%y") %>
+    </div>
+  </div>
+
+  <div style='display:none' class='new_comment'>
+    <form class="create_comment" action="/answers/<%= answer.id %>/comments" type="post">
+        <input type="text" name="comment">
+        <input type="submit">
+    </form>
+    <a class='cancel' href="">cancel</a>
+  </div>
+
+  <div class='comments' style='display:none'>
+    <% answer.comments.each do |com| %>
+      <div class="answer-vote">
+        <p id="<%= answer.id %>" class="answer-body grey lighten-4"><%= com.body %></p>
+      </div>
+      <div class="answer-comment left-align">
+        <div class='answer-date'>
+            <a class='answer-user' href='/users/<%= answer.user.id %>'>
+              <%= com.user.username %>
+            </a> <%= com.created_at.strftime("%b-%d-20%y") %>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>
+<% end %>
+</div>

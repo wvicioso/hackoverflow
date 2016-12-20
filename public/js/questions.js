@@ -10,23 +10,23 @@ $(document).ready(function () {
     $('#submit_question').hide();
   });
 
-  // $('#submit_question').submit(function (event) {
-  //   event.preventDefault();
-  //   var $inputs = $('form :input');
-  //   var values = {};
-  //   $inputs.each(function() {
-  //     values[this.name] = $(this).val();
-  //   });
-  //   var route = $(this).attr('action');
-  //   $.ajax({
-  //     url: route,
-  //     method: "POST",
-  //     data: $('#submit_question').serialize()
-  //   }).done(function(msg) {
-  //     $('#append').append("<li><a href='/questions/" + msg.id + "'>" + msg.title + "</a></li>");
-  //     $('#submit_question').hide();
-  //   });
-  // });
+  $('#submit_question').submit(function (event) {
+    event.preventDefault();
+    var $inputs = $('form :input');
+    var values = {};
+    $inputs.each(function() {
+      values[this.name] = $(this).val();
+    });
+    var route = $(this).attr('action');
+    $.ajax({
+      url: route,
+      method: "POST",
+      data: $('#submit_question').serialize()
+    }).done(function(msg) {
+      $('#append').append("<li><a href='/questions/" + msg.id + "'>" + msg.title + "</a></li>");
+      $('#submit_question').hide();
+    });
+  });
 
   // $('.edit').click(function (event) {
   //   event.preventDefault();

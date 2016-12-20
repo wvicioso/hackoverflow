@@ -36,7 +36,6 @@ $(document).ready(function () {
 
   $('.update').submit( function (event) {
     event.preventDefault();
-    console.log('here 1');
     var $inputs = $('form :input');
     var values = {};
     $inputs.each(function() {
@@ -48,10 +47,29 @@ $(document).ready(function () {
       method: "put",
       data: values
     }).done(function(msg) {
+      // I don't get an error message but lines 51-53 dont do anything. I'm trying to display the edited comment.
       $(event.target).parent().prev().show();
       $(event.target).parent().prev().prev().show();
       $(event.target).parent().prev().prev().prev().children().last().children().first().text(msg.text).show();
     });
+  });
+
+  $('#new-ans').submit( function (event) {
+    event.preventDefault();
+    var $inputs = $('form :input');
+    var values = {};
+    $inputs.each(function() {
+      values[this.name] = $(this).val();
+    });
+    var route = $(this).attr('action');
+    $.ajax({
+      url: route,
+      method: "post",
+      data: values
+    }).done(function(response) {
+
+      // I don't get an error message but lines 52-54 dont do anything.
+      $(event.target).closest('.answers').append( response.answer );
   });
 
   $(".create_comment").submit(function(event) {
