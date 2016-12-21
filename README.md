@@ -1,8 +1,14 @@
 HackOverflow
 
-Roman Levytskyy
-Matt Edwards
-Wellington Vicioso
+HackOverflow is a StackOverflow clone built on Sinatra using the following technologies:
+-Ruby
+-Javascript
+-Jquery
+-AJAX
+-Materialize
+
+Developed and Designed by:
+Roman Levytskyy | Wellington Vicioso | Matt Edwards
 
 Herokuapp:
 https://dbc-hackoverflow.herokuapp.com
