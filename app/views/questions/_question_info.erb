@@ -1,14 +1,22 @@
-<div class='question row'>
-  <div class='votes col s1 center-align'>
-    <%= erb :'/votes/_votebox', locals: { votable_type: @question} %>
-  </div>
-  <div class='col s11'>
-    <h2 class='question-title'><%= @question.title %></h2>
-    <p class='question-body grey lighten-4'><%= @question.body %></p>
-    <%if @question.user%>
-      <h6 class='question-date'><a class='question-user' href='/users/<%= @question.user.id %>'><%= @question.user.username %> </a> <%= @question.created_at.strftime("%b-%d-20%y") %></h6>
-    <%else%>
-      <h6 class='question-date'> <%= @question.created_at.strftime("%b-%d-20%y") %></h6>
-    <%end%>
-  </div>
-</div>
+<% if !(@questions.empty?)%>
+  <ul class="white lighten-3">
+    <% @questions.each do |question| %>
+      <div class="center question-wrapper row">
+        <div class="middle-stat grey-text col m2">
+          <li class="green-text"><%= vote_num(question) %></li>
+        </div>
+        <div class="question-main col m10">
+          <li>
+            <p><a class="grey-text text-darken-3 question-title" href='/questions/<%= question.id %>'><%= question.title %></a></p>
+            <br>
+            <div class='row'>
+              <div class="grey-text text-darken-3 col m2"> Views: <span class="green-text"><%= question.views %></span></div>
+              <div class="grey-text text-darken-3 col m3"> Answers: <span class="green-text"><%= question.answers.length %></span></div>
+              <div class="grey-text text-darken-3 col m6">asked by <a class="question-author" href='/users/<%= question.user.id %>'><%= question.user.username %></a> on <%= question.created_at.strftime("%b-%d-20%y") %></div>
+            </div>
+          </li>
+        </div>
+      </div>
+    <% end %>
+  </ul>
+<% end %>

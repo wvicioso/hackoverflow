@@ -4,7 +4,7 @@
       <% if current_user %>
         <h4 class='center-align'>Welcome <%= current_user.username %></h4>
         <a class="col s6 offset-s3 btn waves-effect waves-light submit valign" href="/questions/new">Ask a question
-          <i class="material-icons right">done</i>
+          <i class="material-icons right">add</i>
         </a>
       <% else %>
         <h4 class='center-align'>Welcome to Hack Overflow!</h4>
@@ -15,7 +15,8 @@
       <% end %>
     </div>
     <div class="col s12 m7">
-      <%= erb :'/questions/_top_voted' %>
+      <h4>Top questions:</h4>
+      <%= erb :'/questions/_question_info' %>
     </div>
   </div>
 </div>

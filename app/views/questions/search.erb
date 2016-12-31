@@ -1,0 +1,21 @@
+<div class="search">
+  <%= erb :'/shared/_errors' %>
+  <form class="row" action="/questions/search-by" method="get">
+    <div class="row center-align">
+      <h3>Enter a search keyword</h3>
+      <div class="col s12 col m6 offset-m3">
+        <div class="input-field">
+          <input type="text" name='title' placeholder='title'>
+        </div>
+        <div class="input-field">
+          <input type="text" name='body' placeholder='body'>
+        </div>
+      </div>
+    </div>
+    <div class="center-align">
+      <button class="btn waves-effect waves-light submit" type="submit" name="action">Search
+        <i class="material-icons right">search</i>
+      </button>
+    </div>
+  </form>
+</div>
