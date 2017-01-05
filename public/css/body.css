@@ -3,6 +3,11 @@
   /*border: 1px solid black;*/
 }
 
+h1, h2, h3, h4 {
+  color: grey;
+  font-family: 'Reem Kufi', sans-serif !important;
+}
+
 .answer-links {
   font-size: 17px;
 }
@@ -397,7 +402,7 @@ footer {
   background-color: #4caf50 !important;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 760px) {
   #large-nav {
     display: none;
   }
@@ -409,7 +414,7 @@ footer {
   }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 760px) {
   #small-nav {
     display: none;
   }

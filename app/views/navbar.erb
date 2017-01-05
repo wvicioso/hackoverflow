@@ -25,6 +25,7 @@
     <ul id='dropdown1' class='dropdown-content grey-text'>
       <li><a class="grey-text text-darken-3" href="/">HOME</a></li>
       <li><a class="grey-text text-darken-3" href="/questions">QUESTIONS</a></li>
+      <li><a class="grey-text text-darken-3" href="/questions/search">SEARCH</a></li>
       <li class="divider"></li>
       <% if session[:id] %>
         <li><a class="grey-text text-darken-3" href='/users/<%= session[:id] %>'><%= User.find(session[:id]).username %> </a></li>
