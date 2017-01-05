@@ -1,19 +1,21 @@
 <div class='home-wrapper'>
-  <div class="row valign-wrapper">
-    <div class="col s12 m5">
-      <% if current_user %>
-        <h4 class='center-align'>Welcome <%= current_user.username %></h4>
-        <a class="col s6 offset-s3 btn waves-effect waves-light submit valign" href="/questions/new">Ask a question
-          <i class="material-icons right">add</i>
-        </a>
-      <% else %>
-        <h4 class='center-align'>Welcome to Hack Overflow!</h4>
+  <div class="row">
+      <div class="col s12 m5 left-home">
+        <% if current_user %>
+          <h4 class='center-align'>Welcome <%= current_user.username %></h4>
+          <a class="col s6 offset-s3 btn waves-effect waves-light submit valign" href="/questions/new">Ask a question
+            <i class="material-icons right">add</i>
+          </a>
+        <% else %>
         <div class="valign">
-          <p class='home-description'> -  Ask questions about programming, share knowlege, get help!</p>
-          <a class="home-new btn waves-effect waves-light submit col s6 offset-s3" href="/users/new">Sign Up now!</a>
+          <h4 class=''>Welcome to Hack Overflow!</h4>
+          <div class=''>
+            <p class='home-description'> -  Ask questions about programming, share knowlege, get help!</p>
+            <a class="home-new btn waves-effect waves-light submit col s6 offset-s3" href="/users/new">Sign Up now!</a>
+          </div>
         </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
     <div class="col s12 m7">
       <h4>Top questions:</h4>
       <%= erb :'/questions/_question_info' %>

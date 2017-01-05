@@ -359,6 +359,7 @@ a {
 .search {
   margin-top: 5%;
 }
+<<<<<<< 53d25d9eff9fa3d934007a475bfa466c9e151d16:public/css/body.css
 
 .add_comments:focus {
   color: #eeeeee;
@@ -388,6 +389,10 @@ a {
   border: 1px solid green;
 }
 
+.left-home {
+  margin-top: 30%;
+}
+
 footer {
   background-color: #4caf50 !important;
 }
@@ -398,6 +403,9 @@ footer {
   }
   .brand-logo span {
     font-size: 5vw;
+  }
+  .left-home {
+    margin-top: 5%;
   }
 }
 
