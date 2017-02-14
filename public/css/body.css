@@ -3,6 +3,11 @@
   /*border: 1px solid black;*/
 }
 
+h1, h2, h3, h4 {
+  color: grey;
+  font-family: 'Reem Kufi', sans-serif !important;
+}
+
 .answer-links {
   font-size: 17px;
 }
@@ -312,6 +317,11 @@ a {
   /*width: 45%;*/
 }
 
+.brand-logo {
+  font-weight: 600;
+  letter-spacing: -2px;
+}
+
 .comment a {
   text-align: left;
   font-size: 15px;
@@ -388,20 +398,30 @@ a {
   border: 1px solid green;
 }
 
+.left-home {
+  margin-top: 15%;
+}
+
 footer {
   background-color: #4caf50 !important;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 760px) {
   #large-nav {
     display: none;
   }
   .brand-logo span {
     font-size: 5vw;
   }
+  .left-home {
+    margin-top: 5%;
+  }
+  #small-nav {
+    width: 150px;
+  }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 760px) {
   #small-nav {
     display: none;
   }
