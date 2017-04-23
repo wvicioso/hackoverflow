@@ -56,12 +56,13 @@ $(document).ready(function () {
 
   $('#new-ans').submit( function (event) {
     event.preventDefault();
-    var $inputs = $('form :input');
+    var inputs = $('form :input');
     var values = {};
-    $inputs.each(function() {
+    inputs.each(function() {
       values[this.name] = $(this).val();
     });
     var route = $(this).attr('action');
+    // debugger
     $.ajax({
       url: route,
       method: "post",
@@ -70,7 +71,8 @@ $(document).ready(function () {
 
       // I don't get an error message but lines 52-54 dont do anything.
       $(event.target).closest('.answers').append( response.answer );
-  });
+    });
+  })
 
   $(".create_comment").submit(function(event) {
     event.preventDefault();

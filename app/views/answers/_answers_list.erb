@@ -75,7 +75,7 @@
 
 <% if current_user %>
   <h5>Submit an Answer</h5>
-  <form id='new-ans' action="/questions/<%= @question.id %>" method="post">
+  <form id='new-ans' action="/questions/<%= @question.id %>/answers" method="post">
     <input type="hidden" name="answer[user_id]" value="<%= current_user_id %>">
     <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
     <textarea id='new-ans-body' name="answer[body]" rows="4" cols="40" placeholder="answer"></textarea>

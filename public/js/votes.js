@@ -1,6 +1,5 @@
-$(document).ready(function() {
-
-  $('.votes').on('click', '.vote', function(event){
+$(document).ready(() => {
+  $('.votes').on('click', '.vote', (event) => {
     event.preventDefault();
     var route = $(this).attr('href'),
         $linkClass = $(this).attr('class'),
@@ -10,7 +9,7 @@ $(document).ready(function() {
       url: route,
       method: 'post',
       data: {up_down: direction}
-    }).done(function(response){
+    }).done((response) => {
       if (response.vote_class === 'voted_up' &&  $linkClass.indexOf('up') === -1){
         currentQuestion.find('.voted_down').removeClass('voted_down');
         currentQuestion.find('#up').attr('class', 'vote ' + response.vote_class)
@@ -20,9 +19,9 @@ $(document).ready(function() {
         currentQuestion.find('#down').attr('class', 'vote ' + response.vote_class)
         currentQuestion.find('.vote_number').html(response.vote_num + 1)
       }
-      setTimeout(function(){
+      setTimeout(() => {
         currentQuestion.find('.vote_number').html(response.vote_num);
-      }, 500);
+      }, 50);
     })
   });
 });
