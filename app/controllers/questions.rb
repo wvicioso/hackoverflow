@@ -46,9 +46,9 @@ end
 post '/questions/:question_id/answers' do
   new_answer = Answer.new(params[:answer])
   if new_answer.save
-    respond_to? do |format|
-        format.js
-    end
+    redirect :"/questions/#{params[:answer][:question_id]}"
+  else
+    render "Oooops, something went worng"
   end
 end
 
