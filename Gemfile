@@ -14,7 +14,8 @@ gem 'rake'
 gem 'rspec'
 gem 'faker'
 gem 'bcrypt'
+gem 'pry'
 
 # Use Thin for our web server
 gem 'thin'
-gem 'shotgun' 
+gem 'shotgun'

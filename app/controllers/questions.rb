@@ -43,6 +43,15 @@ post '/questions' do
   end
 end
 
+post '/questions/:question_id/answers' do
+  new_answer = Answer.new(params[:answer])
+  if new_answer.save
+    redirect :"/questions/#{params[:answer][:question_id]}"
+  else
+    render "Oooops, something went worng"
+  end
+end
+
 delete '/questions/:id' do
   current_question = Question.find(params[:id])
   current_question.destroy
